@@ -1,0 +1,43 @@
+.login-container{
+    overflow: hidden;
+}
+.login{
+    background-image: url(../../media/login.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+.login-btn{
+    background-color: transparent;
+    border: none;
+    color: #00095e;
+    font-weight: 700;
+    position: relative;
+    width: fit-content;
+    left: -40%;
+    top: 47%;
+}
+.google-logo{
+    width: 10%;
+}
+
+/* ----------Media Query---------- */
+
+/* Media query for extra small device */
+@media only screen and (max-width:575px) {
+    .login-btn{
+        top: 10%;
+        left: 0;
+    }
+}
+/* Media query for medium device */
+@media only screen and (min-width:768px) and (max-width:991px) {
+
+    .login-btn{
+        left: -37%;
+        top: 48%;
+    }
+
+}

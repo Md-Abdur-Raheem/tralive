@@ -1,0 +1,43 @@
+.get-ready-container{
+    height: fit-content;
+}
+.travel-img{
+    width: 100%;
+}
+.get-ready{
+    text-align: start;
+}
+
+
+.get-btn{
+    margin-top: 20px;
+    background-color: #f6c103;
+    color: white;
+    border: none;
+    padding: 20px 30px;
+    border-radius: 5px;
+    margin-bottom: 180px;
+    border: 1px solid #f6c103;
+}
+.get-btn:hover{
+    background: rgb(0,9,94);
+    background-color: linear-gradient(0deg, rgba(0,9,94,1) 53%, rgba(255,255,255,1) 90%);
+    color: white;
+    border: 1px solid transparent;
+    transition: background-color 1s ease;
+}
+
+/* ----------Media Query---------- */
+
+/* Media query for extra small device */
+@media only screen and (max-width:575px) {
+    .travel-img img{
+        width: 80%;
+    }
+    .get-ready{
+        flex-direction: column;
+        text-align: justify;
+        justify-content: center;
+        align-items: center;
+    }
+}

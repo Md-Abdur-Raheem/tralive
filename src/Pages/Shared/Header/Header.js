@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import logo from '../../../media/logo.png'
 import './Header.css'
 
@@ -15,11 +16,11 @@ const Header = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto"></Nav>
                 <Nav>
-                <Nav.Link className="nav-menu me-lg-4 fs-6 fw-bold" href="#deets"><i className="fas fa-home"></i> Home</Nav.Link>
-                <Nav.Link className="nav-menu me-lg-4 fs-6 fw-bold" eventKey={2} href="#memes"><i className="fas fa-plane"></i> All destinations</Nav.Link>
-                <Nav.Link className="nav-menu me-lg-4 fs-6 fw-bold" eventKey={2} href="#memes"><i className="fas fa-info-circle"></i> About us</Nav.Link>
-                <Nav.Link className="nav-menu me-lg-4 fs-6 fw-bold" eventKey={2} href="#memes"><i className="fas fa-envelope"></i> Contact</Nav.Link>
-                <Nav.Link className="nav-menu me-lg-4 fs-6 fw-bold" eventKey={2} href="#memes"><i className="fas fa-sign-in-alt"></i> Login</Nav.Link>
+                <Nav.Link as={ NavLink} to="/home" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-home"></i> Home</Nav.Link>
+                <Nav.Link as={ NavLink} to="/" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-plane"></i> All destinations</Nav.Link>
+                <Nav.Link as={ NavLink} to="/" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-info-circle"></i> About us</Nav.Link>
+                <Nav.Link as={ NavLink} to="/" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-envelope"></i> Contact</Nav.Link>
+                <Nav.Link as={ NavLink} to="/login" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-sign-in-alt"></i> Login</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
             </Container>
