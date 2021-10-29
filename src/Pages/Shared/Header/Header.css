@@ -6,3 +6,12 @@
     color: #f6c103 !important;
     transition: color .5s ease-out;
 }
+.toggle-btn{
+    border: none;
+    color: #00095e;
+}
+.toggle-btn:focus{
+    border: none;
+    box-shadow: none;
+    outline: none;
+}

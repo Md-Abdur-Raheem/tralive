@@ -11,7 +11,7 @@ const Header = () => {
                 <img
                     src={logo} className="d-inline-block align-top" alt="React Bootstrap logo"
                 /></Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" className="toggle-btn" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto"></Nav>
                 <Nav>

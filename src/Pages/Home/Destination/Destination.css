@@ -1,0 +1,73 @@
+.destination-image{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.image-container{
+    height: 270px;
+    overflow: hidden;
+}
+
+.destination:hover .destination-image{
+    transform: scale(1.1);
+    transition: transform 1s ease-out;
+}
+
+.card-title{
+    color: #00095e;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.price{
+    font-size: 30px;
+    color: #f6c103;
+}
+
+.book-now-btn{
+    background-color: #4d4d4d;
+    width: fit-content;
+    position: relative;
+    left: 33%;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+}
+
+.book-now-btn:hover{
+    background-color: #f6c103;
+    color: #00095e;
+    transition: background-color 1s ease;
+}
+
+
+/* ----------Media Query---------- */
+
+/* Media query for extra small device */
+@media only screen and (max-width:575px) {
+    .book-now-btn{
+        left: 22%;
+    }
+
+    /* Media query for medium device */
+@media only screen and (min-width:768px) and (max-width:991px) {
+
+    .book-now-btn{
+        position: relative;
+        left: 0;
+    }
+
+}
+
+/* Media query for large device */
+@media only screen and (min-width:992px) and (max-width:1199px) {
+
+    .book-now-btn{
+        position: relative;
+        left: 5%;
+    }
+
+}
+   
+}

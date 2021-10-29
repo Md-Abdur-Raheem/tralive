@@ -6,11 +6,13 @@
     overflow: hidden;
 
 }
+
 .hero-title{
     font-size: 50px;
     font-weight: 900;
     color: #00095e;
 }
+
 .hero-title-border{
     border-bottom: 10px solid #f6c103;
     width: 26%;
@@ -19,11 +21,13 @@
     top: -3%;
     z-index: 2;
 }
+
 .hero-sub-title{
     margin-top: 25px;
     color: #00095e;
     font-weight: 300;
 }
+
 .hero-btn{
     margin-top: 20px;
     background: rgb(0,9,94);
@@ -41,8 +45,6 @@
     border: 1px solid #f6c103;
     transition: background-color 1s ease;
 }
-
-
 
 @keyframes car-running {
     0% {
@@ -77,23 +79,27 @@
 
 /* Media query for extra small device */
 @media only screen and (max-width:575px) {
-    .hero-title{
-        font-size: 28px;
-    }
-    .hero-title-border{
-        width: 90%;
-        left: 5%;
-    }
     .banner-container{
         width: 100vw;
         height: 90vh;
         background-size: cover;
 
     }
+
+    .hero-title{
+        font-size: 28px;
+    }
+
+    .hero-title-border{
+        width: 90%;
+        left: 5%;
+    }
+
     .hero-btn{
         margin-bottom: 140px;
         padding: 10px 20px;
     }
+
     @keyframes car-running {
         0% {
             right: 0px;
@@ -111,7 +117,6 @@
             right: -250px;
         }
     }
-
     .car{
         width: 100%;
         animation-name: car-running;
@@ -156,7 +161,6 @@
     .banner-container{
         height: 80vw;
     }
-   
 }
 
 /* Media query for extra extra large device */
@@ -164,5 +168,4 @@
     .banner-container{
         height: 50vw;
     }
-   
 }

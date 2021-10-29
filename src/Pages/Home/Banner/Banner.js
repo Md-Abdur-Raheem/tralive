@@ -4,7 +4,7 @@ import car from '../../../media/banner.png'
 
 const Banner = () => {
     return (
-        <div className="banner-container my-5 pt-5">
+        <div className="banner-container mt-5 pt-5">
             <div>
                 <h1 className="hero-title">Lifelong memories just a <br /> few seconds away <div className="hero-title-border"></div></h1>
                 <h3 className="hero-sub-title">Lets start your journey with us, your dream will come true</h3>
