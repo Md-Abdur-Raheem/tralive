@@ -1,0 +1,8 @@
+.nav-menu{
+    color: #00095e !important;
+    font-family: "Josefin Sans", sans-serif;
+}
+.nav-menu:hover{
+    color: #f6c103 !important;
+    transition: color .5s ease-out;
+}

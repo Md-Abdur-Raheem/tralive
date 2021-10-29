@@ -1,0 +1,168 @@
+.banner-container{
+    background-image: url(../../../media/banner-bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: "Josefin Sans", sans-serif;
+    overflow: hidden;
+
+}
+.hero-title{
+    font-size: 50px;
+    font-weight: 900;
+    color: #00095e;
+}
+.hero-title-border{
+    border-bottom: 10px solid #f6c103;
+    width: 26%;
+    position: relative;
+    left: 37%;
+    top: -3%;
+    z-index: 2;
+}
+.hero-sub-title{
+    margin-top: 25px;
+    color: #00095e;
+    font-weight: 300;
+}
+.hero-btn{
+    margin-top: 20px;
+    background: rgb(0,9,94);
+    background-color: linear-gradient(0deg, rgba(0,9,94,1) 53%, rgba(255,255,255,1) 90%);;
+    color: white;
+    border: none;
+    padding: 20px 30px;
+    border-radius: 5px;
+    margin-bottom: 180px;
+    border: 1px solid transparent;
+}
+.hero-btn:hover{
+    background-color: #f6c103;
+    color: white;
+    border: 1px solid #f6c103;
+    transition: background-color 1s ease;
+}
+
+
+
+@keyframes car-running {
+    0% {
+        right: 0px;
+    }
+    25%{
+        right: 250px;
+    }
+    50%{
+        right: 0;
+    }
+    75%{
+        right: 250px;
+    }
+    100%{
+        right: 0px;
+    }
+}
+.car{
+    position: relative;
+    animation-name: car-running;
+    animation-timing-function: ease;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+
+
+
+
+/* ----------Media Query---------- */
+
+/* Media query for extra small device */
+@media only screen and (max-width:575px) {
+    .hero-title{
+        font-size: 28px;
+    }
+    .hero-title-border{
+        width: 90%;
+        left: 5%;
+    }
+    .banner-container{
+        width: 100vw;
+        height: 90vh;
+        background-size: cover;
+
+    }
+    .hero-btn{
+        margin-bottom: 140px;
+        padding: 10px 20px;
+    }
+    @keyframes car-running {
+        0% {
+            right: 0px;
+        }
+        25%{
+            right: 250px;
+        }
+        50%{
+            right: -250px;
+        }
+        75%{
+            right: 0px;
+        }
+        100%{
+            right: -250px;
+        }
+    }
+
+    .car{
+        width: 100%;
+        animation-name: car-running;
+        animation-timing-function: ease;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+    }
+   
+}
+
+/* Media query for small device */
+@media only screen and (min-width:576px) and (max-width:767px) {
+
+    /* Common Styles */
+
+}
+
+
+/* Media query for medium device */
+@media only screen and (min-width:768px) and (max-width:991px) {
+
+    /* Common Styles */
+
+}
+
+/* Media query for large device */
+@media only screen and (min-width:992px) and (max-width:1199px) {
+
+    /* Common Styles */
+
+}
+
+/* Media query for extra large device */
+@media only screen and (min-width:1200px) and (max-width:1399px) {
+
+    /* Common Styles */
+  
+}
+
+/* Media query for extra extra large device */
+@media only screen and (min-width:1400px) and (max-width:2000px) {
+    .banner-container{
+        height: 80vw;
+    }
+   
+}
+
+/* Media query for extra extra large device */
+@media only screen and (min-width:2001px) {
+    .banner-container{
+        height: 50vw;
+    }
+   
+}
