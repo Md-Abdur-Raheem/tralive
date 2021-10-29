@@ -1,0 +1,110 @@
+[
+    {
+      "id": 1,
+      "name": "New York",
+      "price": "350",
+      "description": "Can you REALLY see a huge percentage of NYC in THREE DAYS ? Uh....YES !! ",
+      "img": "https://i.ibb.co/wQ8xVyt/Statue-of-Liberty-and-the-New-York-City-Skyline-USA.jpg",
+      "time": "3 days 2 nights",
+      "loved": "234"
+    },
+    {
+      "id": 2,
+      "name": "Paris",
+      "price": "250",
+      "description": "Paris isn’t just about museums and galleries, it’s about exploring the arrondissements, monuments, and attractions around you.",
+      "img": "https://i.ibb.co/fQMphgG/Famous-Eiffel-tower-in-Paris-with-gorgeous-colors.jpg",
+      "time": "3 days 2 nights",
+      "loved": "248"
+    },
+    {
+      "id": 3,
+      "name": "Tokyo",
+      "price": "375",
+      "description": "Make the most of your first trip to Tokyo with our first time-friendly tips.",
+      "img": "https://i.ibb.co/rFK2PfB/Senso-ji-temple-in-Asakusa-Tokyo-Japan.jpg",
+      "time": "3 days 2 nights",
+      "loved": "197"
+    },
+    {
+      "id": 4,
+      "name": "Finland",
+      "price": "350",
+      "description": "What a better way to experience the remote backcountry of Finnish Lapland than by the means of a snow scooter",
+      "img": "https://i.ibb.co/3SH4n91/pexels-tapio-haaja-2311602.jpg",
+      "time": "3 days 2 nights",
+      "loved": "250"
+    },
+    {
+      "id": 5,
+      "name": "Greece",
+      "price": "320",
+      "description": "Our tours are Private and Personalized. Sit back and relax in our  air-conditioned Mercedes Benz car with your own driver guide.",
+      "img": "https://i.ibb.co/jL67s2R/pexels-alex-azabache-3264735.jpg",
+      "time": "3 days 2 nights",
+      "loved": "256"
+    },
+    {
+      "id": 6,
+      "name": "Italy",
+      "price": "320",
+      "description": "Explore the most picturesque places in Venice with our local guides. ",
+      "img": "https://i.ibb.co/8mqGhhM/pexels-shann-3933128.jpg",
+      "time": "3 days 2 nights",
+      "loved": "255"
+    },
+    {
+      "id": 7,
+      "name": "Malaysia",
+      "price": "280",
+      "description": "Spend the day with a traditional tribe in the Cameron Highands or explore a tea plantation there.",
+      "img": "https://i.ibb.co/P9xYvtW/pexels-jegathisan-manoharan-1580112.jpg",
+      "time": "3 days 2 nights",
+      "loved": "210"
+    },
+    {
+      "id": 8,
+      "name": "Kashmir",
+      "price": "300",
+      "description": "Make your Kashmir holiday an experience to remember by booking this customizable Kashmir tour package that lets you enjoy the paradise-like beauty of Srinagar.",
+      "img": "https://i.ibb.co/Jrh5mBK/kashmir.jpg",
+      "time": "3 days 2 nights",
+      "loved": "400"
+    },
+    {
+      "id": 9,
+      "name": "Egypt",
+      "price": "450",
+      "description": "Enjoy a Nile Cruise, explore the desert or relax by the sea. Reasonable Prices. Destinations: Luxor, Aswan, Cairo.",
+      "img": "https://i.ibb.co/ZYpsdcY/egypt.jpg",
+      "time": "3 days 2 nights",
+      "loved": "250"
+    },
+    {
+      "id": 10,
+      "name": "Singapore",
+      "price": "450",
+      "description": "Can you REALLY see a huge percentage of NYC in THREE DAYS ? Uh....YES !! ",
+      "img": "https://i.ibb.co/D8hMS6x/pexels-adhitya-andanu-1561863.jpg",
+      "time": "3 days 2 nights",
+      "loved": "300"
+    },
+    {
+      "id": 11,
+      "name": "Thailand",
+      "price": "240",
+      "description": "Thailand · A Bountiful Table. Adored around the world, Thai cuisine expresses fundamental aspects of Thai culture",
+      "img": "https://i.ibb.co/4NHqPGJ/pexels-pixabay-460376.jpg",
+      "time": "3 days 2 nights",
+      "loved": "230"
+    },
+    {
+      "id": 12,
+      "name": "Turkey",
+      "price": "300",
+      "description": "Discover tourist attractions while feeling yourself at home in Türkiye. Explore unique experiences and points of interest in Turkey",
+      "img": "https://i.ibb.co/xLW4BkM/pexels-inasi-m-ld-r-2048865.jpg",
+      "time": "3 days 2 nights",
+      "loved": "334"
+    }
+  ]
