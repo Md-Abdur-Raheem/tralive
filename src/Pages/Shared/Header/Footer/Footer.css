@@ -1,0 +1,28 @@
+footer{
+    background-color: #101c44;
+}
+.text{
+    color: #757cab;
+}
+.list-item{
+    list-style-type: none;
+    margin: 0;
+}
+.phone{
+    color: #f6c103;
+}
+.social-icon{
+    color: white;
+}
+.social-icon:hover{
+    transform: translate(0px, -20px);
+    color: #f6c103;
+    transition: transform 1s ease;
+}
+.footer-link{
+    text-decoration: none;
+    color: #757cab ;
+}
+.footer-link:hover{
+    color: white;
+}

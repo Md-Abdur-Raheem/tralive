@@ -126,35 +126,6 @@
    
 }
 
-/* Media query for small device */
-@media only screen and (min-width:576px) and (max-width:767px) {
-
-    /* Common Styles */
-
-}
-
-
-/* Media query for medium device */
-@media only screen and (min-width:768px) and (max-width:991px) {
-
-    /* Common Styles */
-
-}
-
-/* Media query for large device */
-@media only screen and (min-width:992px) and (max-width:1199px) {
-
-    /* Common Styles */
-
-}
-
-/* Media query for extra large device */
-@media only screen and (min-width:1200px) and (max-width:1399px) {
-
-    /* Common Styles */
-  
-}
-
 /* Media query for extra extra large device */
 @media only screen and (min-width:1400px) and (max-width:2000px) {
     .banner-container{

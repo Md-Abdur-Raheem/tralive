@@ -14,9 +14,11 @@ const Destination = (props) => {
         <Card.Body>
             <Card.Title><h3 className="card-title">{name}</h3></Card.Title>
                 <Card.Text>
-                    <h5><i className="fas fa-heart"></i> {loved}</h5>
-                    <p><span className="price"><sup>$</sup>{price}</span> {time}</p>
-                    <p>{description}</p>
+                    <><i className="fas fa-heart"></i> {loved}</>
+                    <br />
+                    <><span className="price"><sup>$</sup>{price}</span> {time}</>
+                    <br /><br />
+                    <>{description}</>
             </Card.Text>
         </Card.Body>
         <button className="book-now-btn">Book Now</button>
