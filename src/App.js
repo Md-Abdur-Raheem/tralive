@@ -10,6 +10,7 @@ import Login from './Pages/Login/Login';
 import AuthProvider from './context/AuthProvider';
 import AllDestinations from './Pages/AllDestinations/AllDestinations';
 import Footer from './Pages/Shared/Footer/Footer';
+import Contact from './Pages/Contact/Contact';
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
 
             <Route path="/allDestinations">
             <AllDestinations></AllDestinations>
+            </Route>
+
+            <Route path="/contact">
+            <Contact></Contact>
             </Route>
 
             <Route path="/login">

@@ -1,0 +1,50 @@
+.contact-container{
+    font-family: "Josefin Sans", sans-serif;
+}
+.cont-title{
+    font-family: "Josefin Sans", sans-serif;
+    color: #f6c103;
+}
+.cont-icon{
+    font-size: 50px;
+    color: #00095e;
+}
+.input-field{
+    width: 300px;
+    height: 50px;
+    margin: 10px;
+    padding: 10px;
+}
+.text-field{
+    width: 620px;
+    margin: 10px;
+    padding: 10px;
+}
+
+/* ----------Media Query---------- */
+
+/* Media query for extra small device */
+@media only screen and (max-width:575px) {
+    .text-field{
+        width: 300px;
+
+    }
+}
+
+/* Media query for medium device */
+@media only screen and (min-width:768px) and (max-width:991px) {
+    .text-field{
+        width: 300px;
+
+    }
+   
+}
+
+/* Media query for large device */
+@media only screen and (min-width:992px) and (max-width:1199px) {
+    .text-field{
+        width: 300px;
+
+    }
+   
+}

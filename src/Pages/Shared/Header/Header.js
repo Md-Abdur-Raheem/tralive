@@ -23,7 +23,7 @@ const Header = () => {
                     <Nav.Link as={ NavLink} to="/home" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-home"></i> Home</Nav.Link>
                     <Nav.Link as={ NavLink} to="/allDestinations" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-plane"></i> All destinations</Nav.Link>
                     <Nav.Link as={ NavLink} to="/" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-info-circle"></i> About us</Nav.Link>
-                    <Nav.Link as={ NavLink} to="/" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-envelope"></i> Contact</Nav.Link>
+                    <Nav.Link as={ NavLink} to="/contact" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-envelope"></i> Contact</Nav.Link>
                         {
                             user.email ?
                                 <>   <img className="user-photo" src={ user?.photoURL || userPhotoDefault } alt="" />
