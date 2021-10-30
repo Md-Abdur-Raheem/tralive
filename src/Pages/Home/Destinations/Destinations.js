@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Spinner } from 'react-bootstrap';
 import Destination from '../Destination/Destination';
 import './Destinations.css'
 
@@ -18,11 +18,13 @@ const Destinations = () => {
             <h5 className="destination-sub-title">Check our best promotional tour</h5>
             <h1 className="hero-title">Our destinations</h1>
             <div className="destination-container">
-                <Row  className="p-5 m-0 flex-nowrap">
                 {
-                    destinations.map(destination => <Destination key = {destination.id} destination = {destination}></Destination>)
+                    destinations.length ? <Row className="p-5 m-0 flex-nowrap">
+                
+                   { destinations.map(destination => <Destination key = {destination.id} destination = {destination}></Destination>) }
+             
+                    </Row>  : <Spinner className="my-5" animation="grow" />
                 }
-                </Row>
         </div>
         </Container>
     );

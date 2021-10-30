@@ -42,7 +42,6 @@
 .hero-btn:hover{
     background-color: #f6c103;
     color: white;
-    border: 1px solid #f6c103;
     transition: background-color 1s ease;
 }
 

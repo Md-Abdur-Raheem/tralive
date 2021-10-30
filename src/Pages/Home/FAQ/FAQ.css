@@ -1,0 +1,63 @@
+.accordion-container{
+    width: 25%;
+}
+.faq-img{
+    width: 50%;
+}
+/* ----------Media Query---------- */
+
+/* Media query for extra small device */
+@media only screen and (max-width:575px) {
+    .faq-container{
+        flex-direction: column-reverse;
+    }
+    .faq-img{
+        width: 100%;
+    }
+    .accordion-container{
+    width: 100%;
+    }
+}
+
+/* Media query for small device */
+@media only screen and (min-width:576px) and (max-width:767px) {
+
+    /* Common Styles */
+
+}
+
+
+/* Media query for medium device */
+@media only screen and (min-width:768px) and (max-width:991px) {
+    .accordion-container{
+        width: 100%;
+    }
+}
+
+/* Media query for large device */
+@media only screen and (min-width:992px) and (max-width:1199px) {
+
+    /* Common Styles */
+
+}
+
+/* Media query for extra large device */
+@media only screen and (min-width:1200px) and (max-width:1399px) {
+
+    /* Common Styles */
+  
+}
+
+/* Media query for extra extra large device */
+@media only screen and (min-width:1400px) and (max-width:2000px) {
+    .banner-container{
+        height: 80vw;
+    }
+}
+
+/* Media query for extra extra large device */
+@media only screen and (min-width:2001px) {
+    .banner-container{
+        height: 50vw;
+    }
+}
