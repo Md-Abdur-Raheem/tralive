@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import footerLogo from '../../../../media/footer-logo.png'
+import footerLogo from '../../../media/footer-logo.png'
 import './Footer.css'
 
 const Footer = () => {
@@ -24,7 +24,7 @@ const Footer = () => {
                         <br />
                         <ul className="m-0 p-0">
                             <li className="text list-item py-2"><NavLink to="/home" className="footer-link">Home</NavLink></li>
-                            <li className="text list-item py-2"><NavLink to="/home" className="footer-link">All Destinations</NavLink></li>
+                            <li className="text list-item py-2"><NavLink to="/allDestinations" className="footer-link">All Destinations</NavLink></li>
                             <li className="text list-item py-2"><NavLink to="/home" className="footer-link">About us</NavLink></li>
                             <li className="text list-item py-2"><NavLink to="/home" className="footer-link">Contact</NavLink></li>
                             <li className="text list-item py-2"><NavLink to="/home" className="footer-link">Login</NavLink></li>

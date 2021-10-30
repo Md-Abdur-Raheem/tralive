@@ -7,8 +7,9 @@ import {
 import Home from './Pages/Home/Home';
 import Header from './Pages/Shared/Header/Header';
 import Login from './Pages/Login/Login';
-import Footer from './Pages/Shared/Header/Footer/Footer';
 import AuthProvider from './context/AuthProvider';
+import AllDestinations from './Pages/AllDestinations/AllDestinations';
+import Footer from './Pages/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
 
             <Route path="/home">
             <Home></Home>
+            </Route>
+
+            <Route path="/allDestinations">
+            <AllDestinations></AllDestinations>
             </Route>
 
             <Route path="/login">

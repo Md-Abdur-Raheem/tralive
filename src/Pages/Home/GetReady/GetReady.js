@@ -2,6 +2,7 @@ import React from 'react';
 import './GetReady.css';
 import travelPic from '../../../media/get.png'
 import { Container } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 const GetReady = () => {
     return (
@@ -15,7 +16,7 @@ const GetReady = () => {
                     <br />
                     <p>Let’s start your journey with us, your dream will come true. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
                     <br />
-                    <button className="get-btn">Book your destination</button>
+                    <NavLink to ="/allDestinations"><button className="get-btn">Book your destination</button></NavLink>
                 </div>
             </div>
         </Container>

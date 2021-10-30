@@ -9,7 +9,6 @@ import './Header.css'
 
 const Header = () => {
     const { user, logOut } = useAuth();
-    console.log(user);
     return (
         <Navbar collapseOnSelect expand="lg" className="mb-5">
             <Container>
@@ -22,12 +21,12 @@ const Header = () => {
                 <Nav className="me-auto"></Nav>
                 <Nav>
                     <Nav.Link as={ NavLink} to="/home" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-home"></i> Home</Nav.Link>
-                    <Nav.Link as={ NavLink} to="/" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-plane"></i> All destinations</Nav.Link>
+                    <Nav.Link as={ NavLink} to="/allDestinations" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-plane"></i> All destinations</Nav.Link>
                     <Nav.Link as={ NavLink} to="/" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-info-circle"></i> About us</Nav.Link>
                     <Nav.Link as={ NavLink} to="/" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-envelope"></i> Contact</Nav.Link>
                         {
                             user.email ?
-                                <>   <img className="user-photo" src={ user.photoURL || userPhotoDefault } alt="" />
+                                <>   <img className="user-photo" src={ user?.photoURL || userPhotoDefault } alt="" />
                                     <NavDropdown id="nav-dropdown-dark-example" menuVariant="dark">
                                         <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/">My Bookings</NavDropdown.Item>
                                         <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/">Manage All Bookings</NavDropdown.Item>
