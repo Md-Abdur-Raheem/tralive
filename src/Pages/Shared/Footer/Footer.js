@@ -26,7 +26,7 @@ const Footer = () => {
                             <li className="text list-item py-2"><NavLink to="/home" className="footer-link">Home</NavLink></li>
                             <li className="text list-item py-2"><NavLink to="/allDestinations" className="footer-link">All Destinations</NavLink></li>
                             <li className="text list-item py-2"><NavLink to="/home" className="footer-link">About us</NavLink></li>
-                            <li className="text list-item py-2"><NavLink to="/home" className="footer-link">Contact</NavLink></li>
+                            <li className="text list-item py-2"><NavLink to="/contact" className="footer-link">Contact</NavLink></li>
                             <li className="text list-item py-2"><NavLink to="/home" className="footer-link">Login</NavLink></li>
                         </ul>
                     </Col>
