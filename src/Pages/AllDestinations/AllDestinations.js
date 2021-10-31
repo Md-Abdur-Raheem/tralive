@@ -6,7 +6,7 @@ import './AllDestinations.css'
 const AllDestinations = () => {
     const [allDestinations, setAllDestinations] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:7000/all-destinations')
+        fetch('https://gruesome-village-05256.herokuapp.com/all-destinations')
             .then(res => res.json())
             .then(data => {
                 setAllDestinations(data)

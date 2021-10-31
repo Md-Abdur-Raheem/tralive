@@ -11,21 +11,22 @@ const BookingDestination = () => {
     const { id } = useParams();
     const [destination, setDestination] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:7000/all-destinations/${id}`)
+        fetch(`https://gruesome-village-05256.herokuapp.com/all-destinations/${id}`)
             .then(res => res.json())
         .then(data => setDestination(data))
     }, [])
     
     const handleConfirm = (id, email, name) => {
         const userBooking = {email, booking:[{id, name, status:'pending'}]}
-        fetch('http://localhost:7000/users/by_email', {
+        fetch('https://gruesome-village-05256.herokuapp.com/users/by_email', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(userBooking)
         })
-        addToDb(id, email)
+        addToDb(id, email);
+        alert('Trip Added')
     }
     return (
         <Container>

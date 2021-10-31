@@ -9,7 +9,7 @@ const AddNewDestination = () => {
         const {id, name, price, img, time, loved, description } = data;
         const newDestination = {id, name, price, img, time, loved, description };        
         
-        fetch('http://localhost:7000/add-new-destination', {
+        fetch('https://gruesome-village-05256.herokuapp.com/add-new-destination', {
             method:"POST",
             headers: {
                 'content-type':"application/json"

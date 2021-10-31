@@ -9,7 +9,7 @@ const useBookings = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:7000/users/${user.email}`)
+        fetch(`https://gruesome-village-05256.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setUsersBooking(data)
@@ -20,7 +20,7 @@ const useBookings = () => {
 
         const savedBooking = getStoredBookings(user.email);
         const id = Object.keys(savedBooking);
-            fetch('http://localhost:7000/all-destinations/by_id', {
+            fetch('https://gruesome-village-05256.herokuapp.com/all-destinations/by_id', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

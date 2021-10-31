@@ -10,7 +10,7 @@ const ManageAllBookings = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:7000/all-bookings')
+        fetch('https://gruesome-village-05256.herokuapp.com/all-bookings')
             .then(res => res.json())
             .then(data => setBookings(data))
         
@@ -19,7 +19,7 @@ const ManageAllBookings = () => {
     const handleDelete = id => {
         const confirmation = window.confirm('Are you sure you want to delete?')
         if (confirmation) {
-            fetch(`http://localhost:7000/all-bookings/${id}`, {
+            fetch(`https://gruesome-village-05256.herokuapp.com/all-bookings/${id}`, {
                 method: "DELETE",
                 headers: {'content-type': 'application/json'}
             })
