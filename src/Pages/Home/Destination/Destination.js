@@ -1,10 +1,11 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import './Destination.css'
 
 const Destination = (props) => {
     const { destination } = props;
-    const { img, name, price, description, loved, time } = destination;
+    const {_id, img, name, price, description, loved, time } = destination;
 
     return (
         <Card className="destination col-md-3 text-center service pb-5 m-2">
@@ -21,7 +22,7 @@ const Destination = (props) => {
                     <>{description}</>
             </Card.Text>
         </Card.Body>
-        <button className="book-now-btn">Book Now</button>
+        <NavLink to={`/bookingDestination/${_id}`}><button className="book-now-btn">Book Now</button></NavLink>
     </Card>
     );
 };

@@ -13,6 +13,7 @@ import Footer from './Pages/Shared/Footer/Footer';
 import Contact from './Pages/Contact/Contact';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 import AddNewDestination from './Pages/AddNewDestination/AddNewDestination';
+import BookingDestination from './Pages/BookigDestination/BookingDestination';
 
 function App() {
   return (
@@ -34,6 +35,10 @@ function App() {
             <Route path="/allDestinations">
             <AllDestinations></AllDestinations>
             </Route>
+
+            <PrivateRoute path="/bookingDestination/:id">
+              <BookingDestination></BookingDestination>
+            </PrivateRoute>
 
             <Route path="/contact">
             <Contact></Contact>

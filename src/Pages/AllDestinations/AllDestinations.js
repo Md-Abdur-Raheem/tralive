@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Container, Row, Spinner } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import './AllDestinations.css'
 
 const AllDestinations = () => {
@@ -34,7 +35,7 @@ const AllDestinations = () => {
                                     <>{destination.description}</>
                             </Card.Text>
                             </Card.Body>
-                            <button style={{fontFamily:"Josefin Sans"}} className="book-now-btn">Book Now</button>
+                            <NavLink to={`/bookingDestination/${destination._id}`}><button className="book-now-btn">Book Now</button></NavLink>
                         </Card>
                         
                         </Col>)
