@@ -4,6 +4,7 @@ import useAuth from "./useAuth";
 
 const useBookings = () => {
     const { user } = useAuth();
+    const [usersBooking, setUsersBooking] = useState([]);
     const [booking, setBooking] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -11,11 +12,13 @@ const useBookings = () => {
         fetch(`http://localhost:7000/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
-                setBooking(data)
+                setUsersBooking(data)
+                setBooking(data);
                 setLoading(false)
             })
+        
 
-        /* const savedBooking = getStoredBookings(user.email);
+        const savedBooking = getStoredBookings(user.email);
         const id = Object.keys(savedBooking);
             fetch('http://localhost:7000/all-destinations/by_id', {
                 method: "POST",
@@ -34,13 +37,12 @@ const useBookings = () => {
                                 storedBooking.push(addedBookings);
                             }
                         }
-                        setBooking(storedBooking);
+                        setUsersBooking(storedBooking);
                 }
-            }) */
+            })
             
     }, [])
-    
-    return [booking, setBooking, loading];
+    return [usersBooking, booking, setUsersBooking, loading];
 }
 
 export default useBookings;

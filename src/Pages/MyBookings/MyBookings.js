@@ -1,18 +1,11 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { Spinner, Table } from 'react-bootstrap';
 import useBookings from '../../hooks/useBookings';
 import './MyBookings.css'
 
 const MyBookings = () => {
-    const [booking, loading] = useBookings();
-    if (!loading) {
-        const filteredId = booking?.booking.map(id => id);
-        console.log(filteredId);
-    }
-    
+    const [usersBooking ] = useBookings();
 
-    console.log(booking);
     return (
         <div className = "cart-container container">
             <Table striped bordered hover className="w-75 container">
@@ -25,14 +18,14 @@ const MyBookings = () => {
                 </thead>
                 <tbody>
                     {
-                        booking.length ? <p>done</p>/* booking.map(b => <tr key={b.id}>
+                        usersBooking.length ? usersBooking.map(b => <tr key={b.id}>
                                             <td>{b.name}</td>
                                             <td>{b.price}</td>
                                         <td>
-                                            <NavLink to="/confirmEnroll"><button className="confirm-btn">Confirm Enroll</button></NavLink>
+                                            <p>Pending</p>
                                         </td>
-                        </tr>) */ :
-                            <p>loading...</p>
+                        </tr>) : 
+                            <tr><td><Spinner className="my-5" animation="grow" /></td></tr>
                                 
                             
                     }

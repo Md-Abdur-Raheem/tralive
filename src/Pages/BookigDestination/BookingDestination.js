@@ -17,7 +17,7 @@ const BookingDestination = () => {
     }, [])
     
     const handleConfirm = (id, email) => {
-        const userBooking = {email, booking:[id], status:"Pending"}
+        const userBooking = {email, booking:[{id, status:'pending'}]}
         fetch('http://localhost:7000/users/by_email', {
             method: "POST",
             headers: {
