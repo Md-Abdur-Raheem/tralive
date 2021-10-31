@@ -22,14 +22,13 @@ const Header = () => {
                 <Nav>
                     <Nav.Link as={ NavLink} to="/home" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-home"></i> Home</Nav.Link>
                     <Nav.Link as={ NavLink} to="/allDestinations" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-plane"></i> All destinations</Nav.Link>
-                    <Nav.Link as={ NavLink} to="/" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-info-circle"></i> About us</Nav.Link>
                     <Nav.Link as={ NavLink} to="/contact" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-envelope"></i> Contact</Nav.Link>
                         {
                             user.email ?
                                 <>   <img className="user-photo" src={ user?.photoURL || userPhotoDefault } alt="" />
                                     <NavDropdown id="nav-dropdown-dark-example" menuVariant="dark">
                                         <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/myBookings">My Bookings</NavDropdown.Item>
-                                        <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/">Manage All Bookings</NavDropdown.Item>
+                                        <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/manageAllBookings">Manage All Bookings</NavDropdown.Item>
                                         <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/addNewDestination">Add new destinations</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item href="#action/3.4"><button onClick={logOut} as={NavLink} className="me-lg-4 log-out-btn"><i className="fas fa-sign-out-alt"></i> Logout</button></NavDropdown.Item>

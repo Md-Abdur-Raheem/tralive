@@ -16,8 +16,8 @@ const BookingDestination = () => {
         .then(data => setDestination(data))
     }, [])
     
-    const handleConfirm = (id, email) => {
-        const userBooking = {email, booking:[{id, status:'pending'}]}
+    const handleConfirm = (id, email, name) => {
+        const userBooking = {email, booking:[{id, name, status:'pending'}]}
         fetch('http://localhost:7000/users/by_email', {
             method: "POST",
             headers: {
@@ -44,7 +44,7 @@ const BookingDestination = () => {
                     <p>{user.displayName}</p>
                     <p>{user.email}</p>
 
-                    <button onClick={()=>{handleConfirm(destination.id, user.email)}}>Confirm</button>
+                    <button className="hero-btn" onClick={()=>{handleConfirm(destination.id, user.email, destination.name)}}>Confirm</button>
 
                 </Col>
            </Row>

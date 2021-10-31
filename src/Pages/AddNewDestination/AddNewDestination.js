@@ -6,8 +6,8 @@ import './AddNewDestination.css'
 const AddNewDestination = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        const { name, price, img, time, loved, description } = data;
-        const newDestination = { name, price, img, time, loved, description };        
+        const {id, name, price, img, time, loved, description } = data;
+        const newDestination = {id, name, price, img, time, loved, description };        
         
         fetch('http://localhost:7000/add-new-destination', {
             method:"POST",
@@ -30,6 +30,10 @@ const AddNewDestination = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <table className="container" style={{fontFamily:"Josefin Sans", fontWeight:'700'}}>
                     <tbody>
+                        <tr>
+                            <td ><label className="mb-3">Destination ID :</label></td>
+                            <td><input className="px-2 py-1 w-75 mb-3" type="Number" placeholder="Destination Id" {...register("id", { required: true })} /></td>
+                        </tr>
                         <tr>
                             <td ><label className="mb-3">Destination Name :</label></td>
                             <td><input className="px-2 py-1 w-75 mb-3" type="text" placeholder="Destination Name" {...register("name", { required: true })} /></td>
