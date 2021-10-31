@@ -14,6 +14,7 @@ import Contact from './Pages/Contact/Contact';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 import AddNewDestination from './Pages/AddNewDestination/AddNewDestination';
 import BookingDestination from './Pages/BookigDestination/BookingDestination';
+import MyBookings from './Pages/MyBookings/MyBookings';
 
 function App() {
   return (
@@ -36,9 +37,6 @@ function App() {
             <AllDestinations></AllDestinations>
             </Route>
 
-            <PrivateRoute path="/bookingDestination/:id">
-              <BookingDestination></BookingDestination>
-            </PrivateRoute>
 
             <Route path="/contact">
             <Contact></Contact>
@@ -49,7 +47,15 @@ function App() {
             </Route>
 
             <PrivateRoute path="/addNewDestination">
-            <AddNewDestination></AddNewDestination>
+              <AddNewDestination></AddNewDestination>
+            </PrivateRoute>
+            
+            <PrivateRoute path="/bookingDestination/:id">
+              <BookingDestination></BookingDestination>
+            </PrivateRoute>
+
+            <PrivateRoute path="/myBookings">
+              <MyBookings></MyBookings>
             </PrivateRoute>
 
           </Switch>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
+import { addToDb } from '../../utilities/localStorage';
 import './BookingDestination.css'
 
 const BookingDestination = () => {
@@ -10,10 +11,22 @@ const BookingDestination = () => {
     const { id } = useParams();
     const [destination, setDestination] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:5000/all-destinations/${id}`)
+        fetch(`http://localhost:7000/all-destinations/${id}`)
             .then(res => res.json())
         .then(data => setDestination(data))
-    },[])
+    }, [])
+    
+    const handleConfirm = (id, email) => {
+        const userBooking = {email, booking:[id], status:"Pending"}
+        fetch('http://localhost:7000/users/by_email', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userBooking)
+        })
+        addToDb(id, email)
+    }
     return (
         <Container>
             <Row>
@@ -31,7 +44,7 @@ const BookingDestination = () => {
                     <p>{user.displayName}</p>
                     <p>{user.email}</p>
 
-                    <button>Confirm</button>
+                    <button onClick={()=>{handleConfirm(destination.id, user.email)}}>Confirm</button>
 
                 </Col>
            </Row>

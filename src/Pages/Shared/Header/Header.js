@@ -28,7 +28,7 @@ const Header = () => {
                             user.email ?
                                 <>   <img className="user-photo" src={ user?.photoURL || userPhotoDefault } alt="" />
                                     <NavDropdown id="nav-dropdown-dark-example" menuVariant="dark">
-                                        <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/">My Bookings</NavDropdown.Item>
+                                        <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/myBookings">My Bookings</NavDropdown.Item>
                                         <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/">Manage All Bookings</NavDropdown.Item>
                                         <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/addNewDestination">Add new destinations</NavDropdown.Item>
                                         <NavDropdown.Divider />

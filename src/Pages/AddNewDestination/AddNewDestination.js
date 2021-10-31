@@ -9,7 +9,7 @@ const AddNewDestination = () => {
         const { name, price, img, time, loved, description } = data;
         const newDestination = { name, price, img, time, loved, description };        
         
-        fetch('http://localhost:5000/add-new-destination', {
+        fetch('http://localhost:7000/add-new-destination', {
             method:"POST",
             headers: {
                 'content-type':"application/json"
