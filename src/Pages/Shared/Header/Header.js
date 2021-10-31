@@ -30,7 +30,7 @@ const Header = () => {
                                     <NavDropdown id="nav-dropdown-dark-example" menuVariant="dark">
                                         <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/">My Bookings</NavDropdown.Item>
                                         <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/">Manage All Bookings</NavDropdown.Item>
-                                        <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/">Add new destinations</NavDropdown.Item>
+                                        <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/addNewDestination">Add new destinations</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item href="#action/3.4"><button onClick={logOut} as={NavLink} className="me-lg-4 log-out-btn"><i className="fas fa-sign-out-alt"></i> Logout</button></NavDropdown.Item>
                                     </NavDropdown>

@@ -11,15 +11,7 @@ const useFirebase = () => {
 
     const signInWithGoogle = () => {
         const googleProvider = new GoogleAuthProvider();
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                const user = result.user;
-                setUser(user);
-            })
-            .catch(error => {
-            setError(error.message)
-            })
-            .finally(() => setLoading(false))
+       return signInWithPopup(auth, googleProvider)
     }
 
     const logOut = () => {
@@ -42,15 +34,16 @@ const useFirebase = () => {
     }
 
     useEffect(() => {
-        onAuthStateChanged(auth, user => {
+        const unsubscribe = onAuthStateChanged(auth, user => {
             if (user) {
-                setUser(user);
+                setUser(user)
             }
             else {
-                setUser({});
+                setUser({})
             }
-            setLoading(false);
-        })
+            setLoading(false)
+        });
+        return unsubscribe;
     }, []);
 
     return {user, error, loading, setUser, setError, setLoading, signInWithGoogle, logOut}

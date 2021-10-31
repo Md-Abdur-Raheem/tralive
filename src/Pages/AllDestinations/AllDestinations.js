@@ -7,7 +7,9 @@ const AllDestinations = () => {
     useEffect(() => {
         fetch('http://localhost:5000/all-destinations')
             .then(res => res.json())
-            .then(data => setAllDestinations(data))
+            .then(data => {
+                setAllDestinations(data)
+            })
     }, [])
     return (
         <div>
@@ -17,12 +19,12 @@ const AllDestinations = () => {
                     allDestinations.length ?
                     <Row className="p-5 m-0 container gy-5">
                     {
-                        allDestinations.map(destination => <Col lg={4}>
+                        allDestinations.map(destination => <Col  key={destination._id} lg={4}>
                             <Card className="destination text-center h-100 pb-5 m-2">
                             <div className="image-container">
                                 <Card.Img className="destination-image" variant="top" src={destination.img} />
                             </div>
-                            <Card.Body>
+                            <Card.Body style={{fontFamily:"Josefin Sans"}}>
                                 <Card.Title><h3 className="card-title">{destination.name}</h3></Card.Title>
                                 <Card.Text>
                                     <><i className="fas fa-heart"></i> {destination.loved}</>
@@ -32,7 +34,7 @@ const AllDestinations = () => {
                                     <>{destination.description}</>
                             </Card.Text>
                             </Card.Body>
-                            <button className="book-now-btn">Book Now</button>
+                            <button style={{fontFamily:"Josefin Sans"}} className="book-now-btn">Book Now</button>
                         </Card>
                         
                         </Col>)

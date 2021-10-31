@@ -13,21 +13,21 @@ const Contact = () => {
                         <i className="cont-icon fas fa-map-marker-alt me-3"/>
                         <div className="text-start">
                         <h4>Address</h4>
-                        <p>2130 Fulton Street San Diego CA 94117- <br /> 1080 USA</p>
+                        <p>205/3, Tazlane, Mirpur,<br /> Dhaka-1216</p>
                         </div>
                     </div>
                     <div className="d-flex align-items-center my-5">
                         <i className="cont-icon fas fa-phone-alt me-3"/>
                         <div className="text-start">
-                        <h4>+898 68679 575</h4>
-                        <p>Coll Us Now!</p>
+                        <h4>+10 (78) 738-7093</h4>
+                        <p>Call Us Now!</p>
                         </div>
                     </div>
                     <div className="d-flex align-items-center my-5">
                         <i className="cont-icon fas fa-envelope me-3"></i>
                         <div className="text-start">
                         <p>Do you have a Question?</p>
-                        <h4>info@gmail.com</h4>
+                        <h4>tralive@gmail.com</h4>
                         </div>
                     </div>
                 </div>

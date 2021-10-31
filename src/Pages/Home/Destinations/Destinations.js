@@ -21,7 +21,7 @@ const Destinations = () => {
                 {
                     destinations.length ? <Row className="p-5 m-0 flex-nowrap">
                 
-                   { destinations.map(destination => <Destination key = {destination.id} destination = {destination}></Destination>) }
+                   { destinations.map(destination => <Destination key = {destination._id} destination = {destination}></Destination>) }
              
                     </Row>  : <Spinner className="my-5" animation="grow" />
                 }
