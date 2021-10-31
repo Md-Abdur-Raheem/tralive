@@ -1,5 +1,5 @@
 # Tralive
-No matter who you are, or where you are going, our travel brands help every type of traveler not only find the trip that’s right for them, but get the best value every time. [Visit Meditab](tralive-faad8.web.app/) 
+No matter who you are, or where you are going, our travel brands help every type of traveler not only find the trip that’s right for them, but get the best value every time. [Visit Tralive](https://tralive-faad8.web.app/) 
 
 * Whether it’s planning a family vacation, booking for business, or organizing the trip of a lifetime,
 Trallive unlock the best possibilities for each individual traveler and each type of trip.
