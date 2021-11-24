@@ -25,7 +25,7 @@ const Destinations = () => {
              
                     </Row>  : <Spinner className="my-5" animation="grow" />
                 }
-        </div>
+            </div>
         </Container>
     );
 };

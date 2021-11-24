@@ -7,14 +7,14 @@ import './BookingDestination.css'
 
 const BookingDestination = () => {
     const { user } = useAuth();
-    console.log(user);
     const { id } = useParams();
     const [destination, setDestination] = useState({});
+
     useEffect(() => {
         fetch(`https://gruesome-village-05256.herokuapp.com/all-destinations/${id}`)
             .then(res => res.json())
         .then(data => setDestination(data))
-    }, [])
+    }, [id])
     
     const handleConfirm = (id, email, name) => {
         const userBooking = {email, booking:[{id, name, status:'pending'}]}
@@ -32,20 +32,20 @@ const BookingDestination = () => {
         <Container>
             <Row>
                 <Col sm={6}>
-                    <img className="w-100" src={destination.img} alt="" />
+                    <img className="w-100" src={destination?.img} alt="" />
                 </Col>
                 <Col sm={6}>
                     <h1>{destination.name}</h1>
-                    <p><i className="fas fa-heart"></i> {destination.loved}</p>
-                    <p>{destination.description}</p>
-                    <p>{destination.time}</p>
-                    <p>Price: ${destination.price}</p>
+                    <p><i className="fas fa-heart"></i> {destination?.loved}</p>
+                    <p>{destination?.description}</p>
+                    <p>{destination?.time}</p>
+                    <p>Price: ${destination?.price}</p>
 
                     <h5>Confirm destination</h5>
-                    <p>{user.displayName}</p>
-                    <p>{user.email}</p>
+                    <p>{user?.displayName}</p>
+                    <p>{user?.email}</p>
 
-                    <button className="hero-btn" onClick={()=>{handleConfirm(destination.id, user.email, destination.name)}}>Confirm</button>
+                    <button className="hero-btn" onClick={()=>{handleConfirm(destination?.id, user?.email, destination?.name)}}>Confirm</button>
 
                 </Col>
            </Row>

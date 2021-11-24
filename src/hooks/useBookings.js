@@ -41,7 +41,7 @@ const useBookings = () => {
                 }
             })
             
-    }, [])
+    }, [user.email])
     return [usersBooking, booking, setUsersBooking, loading];
 }
 
