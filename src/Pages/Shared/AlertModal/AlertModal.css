@@ -1,3 +1,4 @@
-.alert-modal{
-    background-color: transparent !important;
+.modal-content{
+    background-color: transparent;
+    border: none;
 }

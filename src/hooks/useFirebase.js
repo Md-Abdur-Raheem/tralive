@@ -7,7 +7,6 @@ const useFirebase = () => {
     const [user, setUser] = useState([]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
-    const [AlertModalShow, setAlertModalShow] = useState(false);
     const auth = getAuth();
 
     const signInWithGoogle = () => {
@@ -22,7 +21,6 @@ const useFirebase = () => {
             signOut(auth)
                 .then(() => {
                     setUser([]);
-                    setAlertModalShow(true);
                 })
                 .catch((error) => {
                     setError(error.message);
@@ -48,7 +46,7 @@ const useFirebase = () => {
         return unsubscribe;
     }, [auth]);
 
-    return {user, error, loading, AlertModalShow, setUser, setError, setLoading, signInWithGoogle, logOut,setAlertModalShow}
+    return {user, error, loading, setUser, setError, setLoading, signInWithGoogle, logOut }
 }
 
 export default useFirebase;

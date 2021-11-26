@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { Button }  from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal'
 import useAuth from '../../../hooks/useAuth';
@@ -6,12 +7,13 @@ import AlertModal from '../AlertModal/AlertModal';
 import './VerticalModal.css'
 
 const VerticalModal = (props) => {
-    const { logOut, setAlertModalShow } = useAuth();
+    const { logOut } = useAuth();
+    const [AlertModalShow, setAlertModalShow] = useState(false);
 
     const handleLogout = ()=> {
         logOut();
         props.onHide();
-        setAlertModalShow(true);
+        setAlertModalShow(true)
     }
 
     return (
@@ -23,7 +25,7 @@ const VerticalModal = (props) => {
                 centered
                 >
                 {
-                    props.logout && <>
+                    props.logout && <div style={{backgroundColor: "white", border: "1px solid rgb(0,0,0,.2)"}}>
                         <Modal.Header closeButton>
                             <Modal.Title className="text-center modal-title">
                                 {props.children}
@@ -31,17 +33,17 @@ const VerticalModal = (props) => {
                         </Modal.Header>
                         {/* <Modal.Body>
                         </Modal.Body> */}
-                    </>
+                    </div>
                 }
-                <Modal.Footer>
+                <Modal.Footer style={{backgroundColor: "white", border: ".5px solid rgb(0,0,0,.2)"}}>
                     <Button className="modal-btn" onClick={props.onHide}>Cancel</Button>
                     {
                         props.logout && <><Button className="modal-btn" variant="danger" onClick={handleLogout}>Logout</Button></>
                     }
                 </Modal.Footer>
-               
             </Modal >
-            <AlertModal variant="success">Logout successfully!!!</AlertModal>
+            
+            <AlertModal show={AlertModalShow} onHide={() => setAlertModalShow(false)} variant="success">Logout successfully!!!</AlertModal>
         </>
     );
 };
