@@ -43,7 +43,7 @@ const VerticalModal = (props) => {
                 </Modal.Footer>
             </Modal >
             
-            <AlertModal show={AlertModalShow} onHide={() => setAlertModalShow(false)} variant="success">Logout successfully!!!</AlertModal>
+            <AlertModal show={AlertModalShow} onHide={() => setAlertModalShow(false)} variant="success">Logout successfully !!!</AlertModal>
         </>
     );
 };
