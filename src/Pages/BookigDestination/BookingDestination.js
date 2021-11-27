@@ -84,7 +84,7 @@ const BookingDestination = () => {
 
                 </Col>
             </Row>
-            <AlertModal  show={AlertModalShow} onHide={() => setAlertModalShow(false)} variant="success">Your booking placed successfully !!!</AlertModal>
+            <AlertModal show={AlertModalShow} onHide={() => setAlertModalShow(false)} variant="success">Your booking placed successfully !!!</AlertModal>
         </Container>
     );
 };

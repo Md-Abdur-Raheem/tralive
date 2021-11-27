@@ -17,7 +17,7 @@ const VerticalModal = (props) => {
     }
 
     return (
-        <>
+        <div>
             <Modal
                 {...props}
                 size="md"
@@ -35,16 +35,30 @@ const VerticalModal = (props) => {
                         </Modal.Body> */}
                     </div>
                 }
+                {
+                    props.cancel && <div style={{backgroundColor: "white", border: "1px solid rgb(0,0,0,.2)"}}>
+                    <Modal.Header closeButton>
+                        <Modal.Title className="text-center modal-title">
+                            {props.children}
+                        </Modal.Title>
+                    </Modal.Header>
+                    {/* <Modal.Body>
+                    </Modal.Body> */}
+                </div>
+                }
                 <Modal.Footer style={{backgroundColor: "white", border: ".5px solid rgb(0,0,0,.2)"}}>
                     <Button className="modal-btn" onClick={props.onHide}>Cancel</Button>
                     {
                         props.logout && <><Button className="modal-btn" variant="danger" onClick={handleLogout}>Logout</Button></>
                     }
+                    {
+                        props.cancel && <><Button className="modal-btn" variant="danger" onClick={props.handlecanceltrip}>Cancel Trip</Button></>
+                    }
                 </Modal.Footer>
             </Modal >
             
             <AlertModal show={AlertModalShow} onHide={() => setAlertModalShow(false)} variant="success">Logout successfully !!!</AlertModal>
-        </>
+        </div>
     );
 };
 
