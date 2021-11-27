@@ -46,6 +46,17 @@ const VerticalModal = (props) => {
                     </Modal.Body> */}
                 </div>
                 }
+                {
+                    props.delete && <div style={{backgroundColor: "white", border: "1px solid rgb(0,0,0,.2)"}}>
+                    <Modal.Header closeButton>
+                        <Modal.Title className="text-center modal-title">
+                            {props.children}
+                        </Modal.Title>
+                    </Modal.Header>
+                    {/* <Modal.Body>
+                    </Modal.Body> */}
+                </div>
+                }
                 <Modal.Footer style={{backgroundColor: "white", border: ".5px solid rgb(0,0,0,.2)"}}>
                     <Button className="modal-btn" onClick={props.onHide}>Cancel</Button>
                     {
@@ -53,6 +64,9 @@ const VerticalModal = (props) => {
                     }
                     {
                         props.cancel && <><Button className="modal-btn" variant="danger" onClick={props.handlecanceltrip}>Cancel Trip</Button></>
+                    }
+                    {
+                        props.delete && <><Button className="modal-btn" variant="danger" onClick={props.handledeletetrip}>Delete Trip</Button></>
                     }
                 </Modal.Footer>
             </Modal >

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Spinner, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import useBookings from '../../hooks/useBookings';
 import VerticalModal from '../Shared/VerticalModal/VerticalModal';
 import AlertModal from '../Shared/AlertModal/AlertModal'
@@ -44,7 +44,7 @@ const MyBookings = () => {
                 </thead>
                 <tbody>
                     {
-                        usersBookings.length ? usersBookings.map(booking => <tr key={booking._id}>
+                         usersBookings.map(booking => <tr key={booking._id}>
                                             <td>{booking.destination.name}</td>
                                             <td>{booking.destination.price}</td>
                                             <td>{booking.tourDuration.startDate}</td>
@@ -53,7 +53,6 @@ const MyBookings = () => {
                                             <button onClick={() => { setModalShow(true); setCancelTripId(booking._id)}} className="btn btn-danger">Cancel trip</button>
                                         </td>
                         </tr>)
-                            : <tr><td><Spinner className="my-5" animation="grow" /></td></tr>
                     }
                 </tbody>
             </Table>
