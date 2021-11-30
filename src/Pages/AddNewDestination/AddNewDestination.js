@@ -1,13 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import './AddNewDestination.css'
 
 const AddNewDestination = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const [image, setImage] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+    const [control, setControl] = useState(false);
+
+    const uploadImage = () => {
+        const upload_preset = process.env.REACT_APP_UPLOAD_PRESET;
+        const cloud_name = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
+        const url = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
+
+        const data = new FormData();
+        data.append("file", image);
+        data.append("upload_preset", upload_preset);
+        data.append("cloud_name", cloud_name);
+
+        fetch(url, {
+            method: "POST",
+            body: data
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.url) {
+                    setImageUrl(data.url);
+                    setControl(true);
+                }
+            })
+    }
+    
     const onSubmit = data => {
-        const {id, name, price, img, time, loved, description } = data;
-        const newDestination = {id, name, price, img, time, loved, description };        
+        const { name, price, time, loved, description } = data;
+        const newDestination = { name, price, img:imageUrl, time, loved, description };        
         
         fetch('https://gruesome-village-05256.herokuapp.com/add-new-destination', {
             method:"POST",
@@ -31,10 +58,6 @@ const AddNewDestination = () => {
                 <table className="container" style={{fontFamily:"Josefin Sans", fontWeight:'700'}}>
                     <tbody>
                         <tr>
-                            <td ><label className="mb-3">Destination ID :</label></td>
-                            <td><input className="px-2 py-1 w-75 mb-3" type="Number" placeholder="Destination Id" {...register("id", { required: true })} /></td>
-                        </tr>
-                        <tr>
                             <td ><label className="mb-3">Destination Name :</label></td>
                             <td><input className="px-2 py-1 w-75 mb-3" type="text" placeholder="Destination Name" {...register("name", { required: true })} /></td>
                         </tr>
@@ -43,8 +66,11 @@ const AddNewDestination = () => {
                             <td><input className="px-2 py-1 w-75 mb-3" type="number" placeholder="Price" {...register("price", { required: true })} /></td>
                         </tr>
                         <tr>
-                            <td><label className="mb-3">Img URL :</label></td>
-                            <td><input className="px-2 py-1 w-75 mb-3" type="text" placeholder="Img URL" {...register("img", { required: true })} /></td>
+                            <td><label className="mb-3">Thumbnail:</label></td>
+                            <td>
+                                <input className="ms-0 py-1 mb-3" type="file" required onChange={(e) => { setImage(e.target.files[0]) }}/>
+                                <input className="py-1 mb-3" type="submit" disabled={control} value="Upload" onClick={uploadImage} />
+                            </td>
                         </tr>
                         <tr>
                             <td><label className="mb-3">Duration :</label></td>
