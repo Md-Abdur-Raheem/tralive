@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import AlertModal from '../Shared/AlertModal/AlertModal';
 import './AddNewDestination.css'
 
 const AddNewDestination = () => {
@@ -8,6 +9,7 @@ const AddNewDestination = () => {
     const [image, setImage] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [control, setControl] = useState(false);
+    const [AlertModalShow, setAlertModalShow] = useState(false);
 
     const uploadImage = () => {
         const upload_preset = process.env.REACT_APP_UPLOAD_PRESET;
@@ -19,7 +21,7 @@ const AddNewDestination = () => {
         data.append("upload_preset", upload_preset);
         data.append("cloud_name", cloud_name);
 
-        fetch(url, {
+       fetch(url, {
             method: "POST",
             body: data
         })
@@ -27,29 +29,33 @@ const AddNewDestination = () => {
             .then(data => {
                 if (data.url) {
                     setImageUrl(data.url);
-                    setControl(true);
                 }
             })
     }
     
-    const onSubmit = data => {
-        const { name, price, time, loved, description } = data;
-        const newDestination = { name, price, img:imageUrl, time, loved, description };        
-        
-        fetch('https://gruesome-village-05256.herokuapp.com/add-new-destination', {
-            method:"POST",
-            headers: {
-                'content-type':"application/json"
-            },
-            body: JSON.stringify(newDestination)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    alert('New Destination Successfully Added')
-                    reset()
-                }
+    const onSubmit = async (data) => {
+        uploadImage();
+        setControl(true);
+       
+        if (control) {
+            const { name, price, time, loved, description } = data;
+            const newDestination = { name, price, img:imageUrl, time, loved, description };        
+            
+            fetch('http://localhost:5000/add-new-destination', {
+                method:"POST",
+                headers: {
+                    'content-type':"application/json"
+                },
+                body: JSON.stringify(newDestination)
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        setAlertModalShow(true);
+                        reset()
+                    }
+            })
+        }
     }
 
     return (
@@ -69,7 +75,7 @@ const AddNewDestination = () => {
                             <td><label className="mb-3">Thumbnail:</label></td>
                             <td>
                                 <input className="ms-0 py-1 mb-3" type="file" required onChange={(e) => { setImage(e.target.files[0]) }}/>
-                                <input className="py-1 mb-3" type="submit" disabled={control} value="Upload" onClick={uploadImage} />
+                                {/* <input className="py-1 mb-3" type="submit" disabled={control} value="Upload" onClick={uploadImage} /> */}
                             </td>
                         </tr>
                         <tr>
@@ -89,6 +95,7 @@ const AddNewDestination = () => {
                 {errors.exampleRequired && <span>This field is required</span>}
                 <input style={{fontFamily:"Josefin Sans"}} className = "hero-btn btn mb-5" type="submit" value="Add new destination" />
             </form>
+            <AlertModal show={AlertModalShow} onHide={() => setAlertModalShow(false)} variant="success">New destination added successfully !!!</AlertModal>
         </Container>
     );
 };
