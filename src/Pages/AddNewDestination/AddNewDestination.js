@@ -8,6 +8,7 @@ const AddNewDestination = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [image, setImage] = useState("");
     const [imageUrl, setImageUrl] = useState("");
+    const [imageIp, setImageIp] = useState("");
     const [control, setControl] = useState(false);
     const [AlertModalShow, setAlertModalShow] = useState(false);
 
@@ -26,9 +27,11 @@ const AddNewDestination = () => {
             body: data
         })
             .then(res => res.json())
-            .then(data => {
-                if (data.url) {
-                    setImageUrl(data.url);
+           .then(data => {
+            
+               if (data.url) {
+                   setImageUrl(data.url);
+                   setImageIp(data.public_id.split('/')[1])
                 }
             })
     }
@@ -36,10 +39,10 @@ const AddNewDestination = () => {
     const onSubmit = async (data) => {
         uploadImage();
         setControl(true);
-       
+        console.log(imageIp);
         if (control) {
             const { name, price, time, loved, description } = data;
-            const newDestination = { name, price, img:imageUrl, time, loved, description };        
+            const newDestination = { name, price, img:imageUrl, imageIp:imageIp, time, loved, description };        
             
             fetch('http://localhost:5000/add-new-destination', {
                 method:"POST",

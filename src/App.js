@@ -16,6 +16,8 @@ import AddNewDestination from './Pages/AddNewDestination/AddNewDestination';
 import BookingDestination from './Pages/BookigDestination/BookingDestination';
 import MyBookings from './Pages/MyBookings/MyBookings';
 import ManageAllBookings from './Pages/ManageAllBookings/ManageAllBookings';
+import AdminAllDestination from './Pages/AdminAllDestinations/AdminAllDestination';
+import Register from './Pages/Register/Register';
 
 function App() {
   return (
@@ -47,6 +49,10 @@ function App() {
             <Login></Login>
             </Route>
 
+            <Route path="/register">
+            <Register></Register>
+            </Route>
+
             <PrivateRoute path="/addNewDestination">
               <AddNewDestination></AddNewDestination>
             </PrivateRoute>
@@ -61,6 +67,10 @@ function App() {
 
             <PrivateRoute path="/manageAllBookings">
               <ManageAllBookings></ManageAllBookings>
+            </PrivateRoute>
+
+            <PrivateRoute path="/adminAllDestinations">
+              <AdminAllDestination></AdminAllDestination>
             </PrivateRoute>
 
           </Switch>

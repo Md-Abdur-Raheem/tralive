@@ -1,43 +1,117 @@
 .login-container{
     overflow: hidden;
+    position: relative;
 }
-.login{
-    background-image: url(../../media/login.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100vw;
+.login-bg{
+    opacity: 0.4;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
     height: 100vh;
 }
+.login-form{
+    position: relative;
+    left: 35%;
+    font-family: "Josefin Sans", sans-serif;
+    color: #00095e !important;
+    padding: 50px;
+    height: 100vh;
+   
+}
+.login{
+    background-color: #f6c1038f;
+    width: fit-content;
+    padding: 40px;
+    /* height: max-content; */
+    align-items: center;
+}
+.input-field{
+    border: none;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.836);
+    padding: 20px;
+}
+.input-field:focus{
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.93);
+}
 .login-btn{
-    background-color: transparent;
+    padding: 10px 20px;
+    margin-bottom: 50px;
+}
+.google-login-btn{
+    background-color: rgba(255, 255, 255, 0.747);
+    padding: 7px 20px;
+    border-radius: 50px;
     border: none;
     color: #00095e;
-    font-weight: 700;
-    position: relative;
-    width: fit-content;
-    left: -40%;
-    top: 47%;
+    font-weight: 500;
 }
-.google-logo{
-    width: 10%;
+.google-login-btn:hover{
+    background-color: rgba(255, 255, 255, .93);
+    transition: background-color 1s ease;
+}
+.facebook-login-btn{
+    background-color: rgba(255, 255, 255, 0.747);
+    padding: 7px 15px;
+    border-radius: 50px;
+    border: none;
+    color: #00095e;
+    font-weight: 500;
+}
+.facebook-login-btn:hover{
+    background-color: rgba(255, 255, 255, .93);
+    transition: background-color 1s ease;
 }
 
 /* ----------Media Query---------- */
 
 /* Media query for extra small device */
 @media only screen and (max-width:575px) {
-    .login-btn{
-        top: 10%;
+    .login-bg{
+        object-fit: cover;
+    }
+    .login-form{
+        position: relative;
         left: 0;
+        width: 100vw;
+        padding: 0;
+    }
+    .login{
+        padding: 20px 0px;
+        width: auto;
     }
 }
+
 /* Media query for medium device */
 @media only screen and (min-width:768px) and (max-width:991px) {
-
-    .login-btn{
-        left: -37%;
-        top: 48%;
+    .login-bg{
+        object-fit: cover;
     }
+    .login-form{
+        position: relative;
+        left: auto;
+    }
+    .login{
+        padding: 20px 0px;
+        width: auto;
+    }
+
+}
+
+/* Media query for medium device */
+@media only screen and (min-width:1024px) and (max-width:1440px) {
+    .login-bg{
+        object-fit: cover;
+    }
+    .login-form{
+        position: relative;
+        left: 30%;
+    }
+    /* .login{
+        padding: 20px 0px;
+        
+    } */
 
 }

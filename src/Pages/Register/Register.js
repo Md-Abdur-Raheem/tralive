@@ -1,14 +1,12 @@
 import React from 'react';
-import './Login.css';
 import useAuth from '../../hooks/useAuth';
 import { useHistory, useLocation } from 'react-router';
 import loginBg from '../../media/login.jpg';
 import { useForm } from "react-hook-form";
 import { NavLink } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
     const { signInWithGoogle, setUser, setError, setLoading } = useAuth();
-
     const location = useLocation();
     const history = useHistory();
     const redirectURL = location?.state?.from?.pathname || "/";
@@ -28,8 +26,8 @@ const Login = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        const { email, password } = data;
-        console.log(email, password);
+        const { name, email, password, password2 } = data;
+        console.log(name, email, password, password2);
     };
 
     return (
@@ -37,20 +35,24 @@ const Login = () => {
             <img className="login-bg" src={loginBg} alt="" />
             <div className="login-form">
                 <div className="login">
-                    <h2><strong>LOGIN</strong></h2>
+                    <h2><strong>REGISTER</strong></h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                        <input className="input-field" placeholder="Email" type="email" {...register("email", {required: true})} />
+                        <input className="input-field" placeholder="Type your full name" type="text" {...register("name", {required: true})} />
                         <br />
-                        <input className="input-field" placeholder="Password" type="password" {...register("password", { required: true })} />
+                        <input className="input-field" placeholder="Type your email" type="email" {...register("email", {required: true})} />
+                        <br />
+                        <input className="input-field" placeholder="Type your password" type="password" {...register("password", { required: true })} />
+                        <br />
+                        <input className="input-field" placeholder="Re enter your password" type="password" {...register("password2", { required: true })} />
                         <br />
                         {errors.exampleRequired && <span>This field is required</span>}
                         <br />
                         
-                        <input className="hero-btn login-btn" type="submit" value="Login" />
+                        <input className="hero-btn login-btn" type="submit" value="Register" />
                     </form>
 
-                    <p style={{color:"black"}}><strong>New to tralive? <NavLink to="/register">Register</NavLink></strong></p>
+                    <p style={{color:"black"}}><strong>Already have an account? <NavLink to="/login">Login</NavLink></strong></p>
 
                     <p><strong>------------or--------------</strong></p>
                     <br />
@@ -58,7 +60,7 @@ const Login = () => {
                     <button onClick={googleSignIn} className="google-login-btn">
                         <a href="https://icons8.com/icon/V5cGWnc9R4xj/google">
                             <img src="https://img.icons8.com/fluency/24/000000/google-logo.png" alt="" />
-                        </a> Sign in with google
+                        </a> Sign up with google
                     </button>
 
                     <br /><br />
@@ -66,7 +68,7 @@ const Login = () => {
                     <button onClick={googleSignIn} className="facebook-login-btn">
                     <a href="https://icons8.com/icon/118497/facebook">
                         <img src="https://img.icons8.com/color/24/000000/facebook-new.png" alt=""/>
-                        </a> Sign in with facebook
+                        </a> Sign up with facebook
                     </button>
                 </div>
             
@@ -75,4 +77,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
