@@ -7,29 +7,19 @@ import { useForm } from "react-hook-form";
 import { NavLink } from 'react-router-dom';
 
 const Login = () => {
-    const { signInWithGoogle, setUser, setError, setLoading } = useAuth();
+    const { signInWithGoogle, logInUser } = useAuth();
 
     const location = useLocation();
     const history = useHistory();
-    const redirectURL = location?.state?.from?.pathname || "/";
 
-    const googleSignIn = () => {
-        signInWithGoogle()
-        .then(result => {
-            const user = result.user;
-            setUser(user);
-            history.push(redirectURL);
-        })
-        .catch(error => {
-        setError(error.message)
-        })
-        .finally(() => setLoading(false))
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, history);
     }
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         const { email, password } = data;
-        console.log(email, password);
+        logInUser(email, password, location, history)
     };
 
     return (
@@ -55,7 +45,7 @@ const Login = () => {
                     <p><strong>------------or--------------</strong></p>
                     <br />
 
-                    <button onClick={googleSignIn} className="google-login-btn">
+                    <button onClick={handleGoogleSignIn} className="google-login-btn">
                         <a href="https://icons8.com/icon/V5cGWnc9R4xj/google">
                             <img src="https://img.icons8.com/fluency/24/000000/google-logo.png" alt="" />
                         </a> Sign in with google
@@ -63,7 +53,7 @@ const Login = () => {
 
                     <br /><br />
 
-                    <button onClick={googleSignIn} className="facebook-login-btn">
+                    <button onClick={handleGoogleSignIn} className="facebook-login-btn">
                     <a href="https://icons8.com/icon/118497/facebook">
                         <img src="https://img.icons8.com/color/24/000000/facebook-new.png" alt=""/>
                         </a> Sign in with facebook

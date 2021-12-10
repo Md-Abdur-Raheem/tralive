@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import initAuthentication from "../firebase/firebase.init";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword  } from "firebase/auth";
 
 initAuthentication();
 const useFirebase = () => {
@@ -9,14 +9,78 @@ const useFirebase = () => {
     const [loading, setLoading] = useState(true);
     const auth = getAuth();
 
-    const signInWithGoogle = () => {
+
+    const registerUser = (name, email, password, location, history) => {
+        setLoading(true);
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                updateUserProfile(name);
+                const userProfile = userCredential.user;
+
+                setUser(user);
+                saveUserToDb(name, userProfile, 'POST');
+
+                const redirectURL = location?.state?.from?.pathname || "/";
+                history.replace(redirectURL);
+            })
+            .catch((error) => {
+                setError(error.message);
+            })
+            .finally(() => {
+                setLoading(false);
+        })
+    }
+
+    const updateUserProfile = name => {
+        updateProfile(auth.currentUser, {
+            displayName: name
+          }).then(() => {
+              
+          }).catch((error) => {
+            setError(error.message)
+          })
+    }
+
+
+    const logInUser = (email, password, location, history) => {
+        setLoading(true);
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                const redirectURL = location?.state?.from?.pathname || "/";
+
+                setUser(user);
+                history.replace(redirectURL);
+                
+            })
+            .catch((error) => {
+                setError(error.message);
+            })
+            .finally(() => {
+                setLoading(false);
+                
+        })
+    }
+
+    const signInWithGoogle = (location, history) => {
         const googleProvider = new GoogleAuthProvider();
-       return signInWithPopup(auth, googleProvider)
+        signInWithPopup(auth, googleProvider)
+        .then(result => {
+            const user = result.user;
+
+            const redirectURL = location?.state?.from?.pathname || "/";
+            history.replace(redirectURL);
+
+            setUser(user);
+            saveUserToDb(user.displayName, user, 'PUT');
+        })
+        .catch(error => {
+        setError(error.message)
+        })
+        .finally(() => setLoading(false))
     }
 
     const logOut = () => {
-        // const confirmation = window.confirm('Are you sure you want to logout?')
-        // if (confirmation) {
             setLoading(true);
             signOut(auth)
                 .then(() => {
@@ -26,11 +90,6 @@ const useFirebase = () => {
                     setError(error.message);
                 })
                 .finally(() => setLoading(false))
-        // }
-        // else {
-        //     return;
-        // }
-        
     }
 
     useEffect(() => {
@@ -46,7 +105,20 @@ const useFirebase = () => {
         return unsubscribe;
     }, [auth]);
 
-    return {user, error, loading, setUser, setError, setLoading, signInWithGoogle, logOut }
+
+    const saveUserToDb = (name, userProp, method) => {
+        console.log(userProp);
+        const newUser = { Id: userProp.uid, Name: name, Email: userProp.email, Email_Verified: userProp.emailVerified, Role: "User" };
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(newUser)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
+
+    return {user, error, loading, setUser, setError, setLoading, signInWithGoogle, logOut, registerUser, logInUser }
 }
 
 export default useFirebase;
