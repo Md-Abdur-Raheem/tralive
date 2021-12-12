@@ -1,0 +1,12 @@
+.offcanvas-start{
+    top: 100px;
+    width: 300px !important;
+    height: 300px;
+    position: fixed;
+    background-color: transparent;
+    color: #00095e;
+    font-family: "Josefin Sans", sans-serif;
+}
+.side-nav-btn{
+    background-color: transparent;
+}

@@ -35,7 +35,8 @@ const AdminAllDestination = () => {
             })
     }
     return (
-        <div className = "container">
+        <div className="container">
+        <h1 style={{color:"#00095e", marginBottom: 30}}>All Destinations</h1>
         <Table striped bordered hover className="w-75 container">
             <thead>
                 <tr>

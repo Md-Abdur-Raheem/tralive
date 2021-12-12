@@ -28,14 +28,18 @@ const Header = () => {
                         <Nav.Link as={ NavLink} to="/home" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-home"></i> Home</Nav.Link>
                         <Nav.Link as={ NavLink} to="/allDestinations" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-plane"></i> All destinations</Nav.Link>
                         <Nav.Link as={ NavLink} to="/contact" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-envelope"></i> Contact</Nav.Link>
+                        <Nav.Link as={ NavLink} to="/dashboard" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-users-cog"></i> Dashboard</Nav.Link>
                             {
                                 user.email ?
                                     <>   <img className="user-photo" src={ user?.photoURL || userPhotoDefault } alt="" />
                                         <NavDropdown id="nav-dropdown-dark-example" menuVariant="dark">
+                                            <NavDropdown.Item className="dropdown-profile-menu">
+                                                <div>
+                                                    <img  className="user-photo" src={user?.photoURL || userPhotoDefault} alt="" />
+                                                    <p className='text-white'>{user?.displayName}</p>
+                                                </div>
+                                            </NavDropdown.Item>
                                             <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/myBookings">My Bookings</NavDropdown.Item>
-                                            <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/manageAllBookings">Manage All Bookings</NavDropdown.Item>
-                                            <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/adminAllDestinations">All Destinations</NavDropdown.Item>
-                                            <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/addNewDestination">Add new destinations</NavDropdown.Item>
                                             <NavDropdown.Divider />
                                             <NavDropdown.Item href="#action/3.4"><button onClick={()=>setModalShow(true)} as={NavLink} className="me-lg-4 log-out-btn"><i className="fas fa-sign-out-alt"></i> Logout</button></NavDropdown.Item>
                                         </NavDropdown>

@@ -42,6 +42,24 @@
     background-color: #dee2e631 !important;
 }
 
+.dropdown-profile-menu{
+    text-decoration: none;
+    color: white !important;
+    background-color: transparent !important;
+    font-family: "Josefin Sans", sans-serif;
+    cursor: auto;
+}
+.dropdown-profile-menu > div{
+    display: grid;
+    grid-template-columns : repeat(4, 1fr);
+    grid-gap: -10;
+    align-content: center;
+}
+.dropdown-profile-menu > div > img{
+    width: 25px;
+    margin-right: 5px;
+}
+
 /* ----------Media Query---------- */
 
 /* Media query for extra small device */

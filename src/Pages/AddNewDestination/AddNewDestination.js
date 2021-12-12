@@ -63,6 +63,7 @@ const AddNewDestination = () => {
 
     return (
         <Container>
+            <h1 style={{color:"#00095e", marginBottom: 30}}>Add New Destination</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <table className="container" style={{fontFamily:"Josefin Sans", fontWeight:'700'}}>
                     <tbody>
