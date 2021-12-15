@@ -19,6 +19,7 @@ import ManageAllBookings from './Pages/ManageAllBookings/ManageAllBookings';
 import AdminAllDestination from './Pages/AdminAllDestinations/AdminAllDestination';
 import Register from './Pages/Register/Register';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import MakeAdmin from './Pages/MakeAdmin/MakeAdmin';
 
 function App() {
   return (
@@ -76,6 +77,10 @@ function App() {
 
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
+            </PrivateRoute>
+
+            <PrivateRoute path="/makeAdmin">
+              <MakeAdmin></MakeAdmin>
             </PrivateRoute>
 
           </Switch>

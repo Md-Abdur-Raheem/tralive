@@ -7,9 +7,11 @@
     color: #00095e;
     font-family: "Josefin Sans", sans-serif;
 }
+
 .side-nav-btn{
     background-color: transparent;
 }
+
 .expand-btn{
     background-color: transparent;
     display: block;
@@ -18,10 +20,15 @@
     top: 5px;
     left: 0vw;
 }
+
 .btn-close:focus{
     outline: none;
     box-shadow: none;
     border: none;
+}
+
+.arrow{
+    -webkit-text-stroke: 2px white;
 }
 
 /* Media query for small device */

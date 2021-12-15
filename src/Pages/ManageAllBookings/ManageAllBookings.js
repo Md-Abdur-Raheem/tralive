@@ -47,7 +47,7 @@ const ManageAllBookings = () => {
                     <tr>
                     <th>User Email</th>
                         <th>Bookings</th>
-                        <th>Delete</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>

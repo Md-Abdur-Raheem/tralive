@@ -107,7 +107,6 @@ const useFirebase = () => {
 
 
     const saveUserToDb = (name, userProp, method) => {
-        console.log(userProp);
         const newUser = { Id: userProp.uid, Name: name, Email: userProp.email, Email_Verified: userProp.emailVerified, Role: "User" };
         fetch('http://localhost:5000/users', {
             method: method,

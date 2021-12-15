@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Col, Container, Offcanvas, Row } from 'react-bootstrap';
 import AddNewDestination from '../AddNewDestination/AddNewDestination';
 import AdminAllDestination from '../AdminAllDestinations/AdminAllDestination';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageAllBookings from '../ManageAllBookings/ManageAllBookings';
 import './Dashboaed.css'
 
@@ -28,7 +29,6 @@ const Dashboard = () => {
     useEffect(() => {
         window.addEventListener('resize', updateMedia);
         const offcanvas = document.getElementById('side-navigation');
-        console.log(offcanvas);
         
         if (offcanvas && screenSize > 1440) {
             offcanvas.style.display = "block";
@@ -43,7 +43,6 @@ const Dashboard = () => {
 
     const toggleShow = () => {
         setShow(!show)
-        // setRender('')
     }
 
     const handleClick = (renderElement) => {
@@ -71,12 +70,14 @@ const Dashboard = () => {
                                 <button className='side-nav-btn' onClick={()=>handleClick('AllDestinations')}>All Destinations</button>
                                 <br /><br />
                                 <button className='side-nav-btn' onClick={()=>handleClick('AddNewDestination')}>Add New Destination</button>
+                                <br /><br />
+                                <button className='side-nav-btn' onClick={()=>handleClick('MakeAdmin')}>Make Admin</button>
                             </Offcanvas.Body>
                         </Offcanvas>))
                         
                     }
                     {
-                        screenSize < 1440 && <button onClick={toggleShow} className='expand-btn'><i className="fas fa-chevron-circle-right"></i></button>
+                        screenSize < 1440 && <button onClick={toggleShow} className='expand-btn'><i className="fas fa-angle-double-right fa-2x arrow"></i></button>
                     }
                 </Col>
 
@@ -89,6 +90,9 @@ const Dashboard = () => {
                     }
                     {
                         render === "AddNewDestination" && <AddNewDestination/>
+                    }
+                    {
+                        render === "MakeAdmin" && <MakeAdmin/>
                     }
                 </Col>
             </Row>
