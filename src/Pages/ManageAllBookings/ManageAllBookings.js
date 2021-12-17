@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
+import { Dropdown, DropdownButton, Table } from 'react-bootstrap';
 import AlertModal from '../Shared/AlertModal/AlertModal';
 import VerticalModal from '../Shared/VerticalModal/VerticalModal';
 import './ManageAllBookings.css'
@@ -55,7 +55,14 @@ const ManageAllBookings = () => {
                            bookings.map(b => <tr key={b._id}>
                                 <td>{b.email}</td>
                                 <td>{b.destination.name}</td>
-                                <td><button onClick={()=>{setModalShow(true); setDeleteId(b._id)}} className="btn btn-danger">Delete</button></td>
+                               <td className='d-flex justify-content-center'>
+                                   <button onClick={() => { setModalShow(true); setDeleteId(b._id) }} className="btn btn-danger me-5">Delete</button>
+                                   <DropdownButton id="dropdown-basic-button" title="Update Status" bg="warning">
+                                        <Dropdown.Item href="#/action-1">Pending</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-2">On going</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Completed</Dropdown.Item>
+                                    </DropdownButton>
+                               </td>
                            </tr>)
                            
                         }

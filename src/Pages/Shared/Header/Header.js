@@ -10,7 +10,7 @@ import VerticalModal from '../VerticalModal/VerticalModal'
 
 
 const Header = () => {
-    const { user } = useAuth();
+    const { user, admin } = useAuth();
     const [modalShow, setModalShow] = useState(false);
 
     return (
@@ -28,7 +28,9 @@ const Header = () => {
                         <Nav.Link as={ NavLink} to="/home" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-home"></i> Home</Nav.Link>
                         <Nav.Link as={ NavLink} to="/allDestinations" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-plane"></i> All destinations</Nav.Link>
                         <Nav.Link as={ NavLink} to="/contact" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-envelope"></i> Contact</Nav.Link>
-                        <Nav.Link as={ NavLink} to="/dashboard" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-users-cog"></i> Admin Panel</Nav.Link>
+                            {
+                                user.email && admin && <Nav.Link as={ NavLink} to="/dashboard" className="nav-menu me-lg-4 fs-6 fw-bold"><i className="fas fa-users-cog"></i> Admin Panel</Nav.Link>
+                            }
                             {
                                 user.email ?
                                     <>   <img className="user-photo" src={ user?.photoURL || userPhotoDefault } alt="" />

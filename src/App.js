@@ -20,6 +20,8 @@ import AdminAllDestination from './Pages/AdminAllDestinations/AdminAllDestinatio
 import Register from './Pages/Register/Register';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MakeAdmin from './Pages/MakeAdmin/MakeAdmin';
+import AdminRoute from './Pages/AdminRoute/AdminRoute';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -55,9 +57,9 @@ function App() {
             <Register></Register>
             </Route>
 
-            <PrivateRoute path="/addNewDestination">
+            <AdminRoute path="/addNewDestination">
               <AddNewDestination></AddNewDestination>
-            </PrivateRoute>
+            </AdminRoute>
             
             <PrivateRoute path="/bookingDestination/:id">
               <BookingDestination></BookingDestination>
@@ -67,21 +69,25 @@ function App() {
               <MyBookings></MyBookings>
             </PrivateRoute>
 
-            <PrivateRoute path="/manageAllBookings">
+            <AdminRoute path="/manageAllBookings">
               <ManageAllBookings></ManageAllBookings>
-            </PrivateRoute>
+            </AdminRoute>
 
-            <PrivateRoute path="/adminAllDestinations">
+            <AdminRoute path="/adminAllDestinations">
               <AdminAllDestination></AdminAllDestination>
-            </PrivateRoute>
+            </AdminRoute>
 
-            <PrivateRoute path="/dashboard">
+            <AdminRoute path="/dashboard">
               <Dashboard></Dashboard>
-            </PrivateRoute>
+            </AdminRoute>
 
-            <PrivateRoute path="/makeAdmin">
+            <AdminRoute path="/makeAdmin">
               <MakeAdmin></MakeAdmin>
-            </PrivateRoute>
+            </AdminRoute>
+
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
 
           </Switch>
           <Footer></Footer>

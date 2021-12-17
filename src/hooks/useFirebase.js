@@ -7,6 +7,7 @@ const useFirebase = () => {
     const [user, setUser] = useState([]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
+    const [admin, setAdmin] = useState(false);
     const auth = getAuth();
 
 
@@ -105,9 +106,28 @@ const useFirebase = () => {
         return unsubscribe;
     }, [auth]);
 
+    useEffect(() => {
+        setLoading(true);
+        if(user.email){
+            const email = user.email;
+            fetch(`http://localhost:5000/checkAdmin/${email}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.admin) {
+                        setAdmin(true);
+                        setLoading(false);
+                    }
+                    else {
+                        setAdmin(false);
+                        setLoading(false);
+                    }
+                })
+        }
+    },[user.email])
+
 
     const saveUserToDb = (name, userProp, method) => {
-        const newUser = { Id: userProp.uid, Name: name, Email: userProp.email, Email_Verified: userProp.emailVerified, Role: "User" };
+        const newUser = { Id: userProp.uid, Name: name, Email: userProp.email, Email_Verified: userProp.emailVerified };
         fetch('http://localhost:5000/users', {
             method: method,
             headers: { 'content-type': 'application/json' },
@@ -117,7 +137,7 @@ const useFirebase = () => {
             .then(data => console.log(data))
     }
 
-    return {user, error, loading, setUser, setError, setLoading, signInWithGoogle, logOut, registerUser, logInUser }
+    return {user, error, loading, admin, setUser, setError, setLoading, signInWithGoogle, logOut, registerUser, logInUser }
 }
 
 export default useFirebase;
