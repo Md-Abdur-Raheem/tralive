@@ -22,6 +22,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import MakeAdmin from './Pages/MakeAdmin/MakeAdmin';
 import AdminRoute from './Pages/AdminRoute/AdminRoute';
 import NotFound from './Pages/NotFound/NotFound';
+import MyWishLists from './Pages/MyWishLists/MyWishLists';
 
 function App() {
   return (
@@ -67,6 +68,10 @@ function App() {
 
             <PrivateRoute path="/myBookings">
               <MyBookings></MyBookings>
+            </PrivateRoute>
+
+            <PrivateRoute path="/myWishLists">
+              <MyWishLists></MyWishLists>
             </PrivateRoute>
 
             <AdminRoute path="/manageAllBookings">

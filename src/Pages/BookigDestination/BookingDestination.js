@@ -81,9 +81,9 @@ const BookingDestination = () => {
 
                     {
                         (localStorage.getItem("tralive-wish-list") && JSON.parse(localStorage.getItem("tralive-wish-list")).includes(id)) || added ?
-                                <button onClick={() => remove(id)}  className="book-now-btn">Remove</button>
+                                <button onClick={() => remove(id)}  className="book-now-btn"><i style={{color: "#f6c103"}} className="fas fa-minus-circle"></i> Remove</button>
                                 :
-                                <button onClick={() => add(id)} className="book-now-btn">Add To Wishlist</button>
+                                <button onClick={() => add(id)} className="book-now-btn"><i style={{color: "#f6c103"}} className="fas fa-star fa-yellow"></i> Add To Wishlist</button>
                     }
 
                     <br /><br />

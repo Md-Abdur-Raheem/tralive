@@ -72,13 +72,13 @@ const Destination = (props) => {
                     <>{description}</>
             </Card.Text>
         </Card.Body>
-            <NavLink to={`/bookingDestination/${_id}`}><button className="book-now-btn wish-list-btn">Book Now</button></NavLink>
+            <NavLink to={`/bookingDestination/${_id}`}><button className="book-now-btn wish-list-btn"><i style={{color: "#00095e"}} className="fas fa-plus-circle"></i> Book Now</button></NavLink>
             <br />
             {
                (localStorage.getItem("tralive-wish-list") && JSON.parse(localStorage.getItem("tralive-wish-list")).includes(_id)) || added ?
-                    <button onClick={() => remove(_id)}  className="book-now-btn ms-5">Remove</button>
+                    <button onClick={() => remove(_id)}  className="book-now-btn ms-5"><i style={{color: "#f6c103"}} className="fas fa-minus-circle"></i> Remove</button>
                     :
-                    <button onClick={() => add(_id)} className="book-now-btn ms-5">Add To Wishlist</button>
+                    <button onClick={() => add(_id)} className="book-now-btn ms-5"><i style={{color: "#f6c103"}} className="fas fa-star fa-yellow"></i> Add To Wishlist</button>
             }
     </Card>
     );

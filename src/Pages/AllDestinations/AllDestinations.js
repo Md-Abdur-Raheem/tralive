@@ -49,13 +49,13 @@ const AllDestinations = () => {
                                     <>{destination.description}</>
                             </Card.Text>
                             </Card.Body>
-                                <NavLink to={`/bookingDestination/${destination._id}`}><button className="book-now-btn wish-list-btn">Book Now</button></NavLink>
+                                <NavLink to={`/bookingDestination/${destination._id}`}><button className="book-now-btn wish-list-btn"><i style={{color: "#00095e"}} className="fas fa-plus-circle"></i> Book Now</button></NavLink>
                                 <br />
                                 {
                                     (localStorage.getItem("tralive-wish-list") && JSON.parse(localStorage.getItem("tralive-wish-list")).includes(destination._id)) ?
-                                            <button onClick={() => remove(destination._id)} style={{marginLeft: 90}} className="book-now-btn">Remove</button>
+                                            <button onClick={() => remove(destination._id)} style={{marginLeft: 90}} className="book-now-btn"><i style={{color: "#f6c103"}} className="fas fa-minus-circle"></i> Remove</button>
                                             :
-                                            <button onClick={() => add(destination._id)} style={{marginLeft: 90}} className="book-now-btn">Add To Wishlist</button>
+                                            <button onClick={() => add(destination._id)} style={{marginLeft: 90}} className="book-now-btn"><i style={{color: "#f6c103"}} className="fas fa-star fa-yellow"></i> Add To Wishlist</button>
                                 }
                         </Card>
                         
