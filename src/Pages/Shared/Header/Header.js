@@ -42,6 +42,7 @@ const Header = () => {
                                                 </div>
                                             </NavDropdown.Item>
                                             <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/myBookings">My Bookings</NavDropdown.Item>
+                                            <NavDropdown.Item className="dropdown-nav-menu" as = {NavLink} to = "/myBookings">My Wishlists</NavDropdown.Item>
                                             <NavDropdown.Divider />
                                             <NavDropdown.Item href="#action/3.4"><button onClick={()=>setModalShow(true)} as={NavLink} className="me-lg-4 log-out-btn"><i className="fas fa-sign-out-alt"></i> Logout</button></NavDropdown.Item>
                                         </NavDropdown>

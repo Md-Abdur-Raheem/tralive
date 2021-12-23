@@ -7,7 +7,7 @@ import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; 
 import 'react-date-range/dist/theme/default.css';
 import AlertModal from '../Shared/AlertModal/AlertModal'
-
+import { addToWishLists, removeFromWishLists } from '../../utilities/localStorage'
 
 const BookingDestination = () => {
     const { user } = useAuth();
@@ -17,7 +17,17 @@ const BookingDestination = () => {
     const [selectionRange, setSelectionRange] = useState({ startDate: new Date(), endDate: new Date(), key: 'selection' });
     const [tourDuration, setTourDuration] = useState({});
     const [AlertModalShow, setAlertModalShow] = useState(false);
+    const [added, setAdded] = useState(false);
+    
+    const add = id => {
+        addToWishLists(id);
+        setAdded(true);
+    }
 
+    const remove = id =>{
+        removeFromWishLists(id);
+        setAdded(false);
+    }
 
 
     const handleSelect = (ranges) => {
@@ -69,6 +79,14 @@ const BookingDestination = () => {
                     <p>{destination?.time}</p>
                     <p>Price: ${destination?.price}</p>
 
+                    {
+                        (localStorage.getItem("tralive-wish-list") && JSON.parse(localStorage.getItem("tralive-wish-list")).includes(id)) || added ?
+                                <button onClick={() => remove(id)}  className="book-now-btn">Remove</button>
+                                :
+                                <button onClick={() => add(id)} className="book-now-btn">Add To Wishlist</button>
+                    }
+
+                    <br /><br />
                     <h5 style={{color: "orange", fontWeight: 700, textDecoration: "underline"}}>Confirm destination</h5>
                     <p><b>{user?.displayName}</b></p>
                     <p><b>{user?.email}</b></p>

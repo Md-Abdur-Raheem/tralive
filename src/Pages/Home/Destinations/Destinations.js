@@ -8,9 +8,9 @@ import './Destinations.css'
 const Destinations = () => {
     const [destinations, setDestinations] = useState([]);
     useEffect(() => {
-        fetch('https://gruesome-village-05256.herokuapp.com/destinations')
+        fetch('http://localhost:5000/destinations')
             .then(res => res.json())
-        .then(data => setDestinations(data))
+            .then(data => setDestinations(data))
     }, [])
     
     return (

@@ -1,17 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Container, Row, Spinner } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import './AllDestinations.css'
+import './AllDestinations.css';
+import { addToWishLists, removeFromWishLists } from '../../utilities/localStorage';
 
 const AllDestinations = () => {
     const [allDestinations, setAllDestinations] = useState([]);
+    const [added, setAdded] = useState(false);
+
     useEffect(() => {
-        fetch('https://gruesome-village-05256.herokuapp.com/all-destinations')
+        fetch('http://localhost:5000/all-destinations')
             .then(res => res.json())
             .then(data => {
                 setAllDestinations(data)
             })
-    }, [])
+    }, [added]);
+
+    const add = id => {
+        addToWishLists(id);
+        setAdded(!added);
+    }
+
+    const remove = id =>{
+        removeFromWishLists(id);
+        setAdded(!added);
+    }
+
     return (
         <div>
             <h1 className="hero-title">Find your favourite place to visit</h1>
@@ -35,7 +49,14 @@ const AllDestinations = () => {
                                     <>{destination.description}</>
                             </Card.Text>
                             </Card.Body>
-                            <NavLink to={`/bookingDestination/${destination._id}`}><button className="book-now-btn">Book Now</button></NavLink>
+                                <NavLink to={`/bookingDestination/${destination._id}`}><button className="book-now-btn wish-list-btn">Book Now</button></NavLink>
+                                <br />
+                                {
+                                    (localStorage.getItem("tralive-wish-list") && JSON.parse(localStorage.getItem("tralive-wish-list")).includes(destination._id)) ?
+                                            <button onClick={() => remove(destination._id)} style={{marginLeft: 90}} className="book-now-btn">Remove</button>
+                                            :
+                                            <button onClick={() => add(destination._id)} style={{marginLeft: 90}} className="book-now-btn">Add To Wishlist</button>
+                                }
                         </Card>
                         
                         </Col>)

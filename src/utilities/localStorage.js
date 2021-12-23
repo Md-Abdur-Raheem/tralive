@@ -1,46 +1,37 @@
-const addToDb = (id, email) => {
-    const exists = getDb(email);
-    let bookings = {};
-    if (!exists) {
-        bookings[id] = 1;
+const addToWishLists = id => {
+    const myWish = [id] ;
+    const traliveWishLists = localStorage.getItem("tralive-wish-list");
+
+    if (!traliveWishLists) {
+        localStorage.setItem("tralive-wish-list", JSON.stringify(myWish));
     }
+
     else {
-        bookings = JSON.parse(exists);
-        if (bookings[id]) {
-            const newCount = bookings[id] + 1;
-            bookings[id] = newCount;
+        const wishLists = JSON.parse(traliveWishLists);
+
+        if (wishLists.includes(id)) {
+            alert("Already added to wish lists");
         }
-        else {
-            bookings[id] = 1;
-        }
-    }
-    updateDb(bookings, email);
-}
-
-const getDb = (email) => localStorage.getItem(`bookings_${email}`);
-
-const updateDb = (booking, email) => localStorage.setItem(`bookings_${email}`, JSON.stringify(booking));
-
-const removeFromDb = (id, email) => {
-    const exists = getDb(email);
-    if (!exists) {
         
-    }
-    else {
-        const bookings = JSON.parse(exists);
-        delete bookings[id];
-        updateDb(bookings, email);
-    }
+        else {
+            wishLists.push(id);
+            const newWishLists = [...wishLists];
+            localStorage.setItem("tralive-wish-list", JSON.stringify(newWishLists));
+        }
+        
+    }        
 }
 
-const getStoredBookings = (email) => {
-    const exists = getDb(email);
-    return exists ? JSON.parse(exists) : {};
+const removeFromWishLists = id => {
+    const traliveWishLists = JSON.parse(localStorage.getItem("tralive-wish-list"));
+    const index = traliveWishLists.indexOf(id);
+
+    traliveWishLists.splice(index, 1);
+
+    const newWishLists = [...traliveWishLists];
+    localStorage.setItem("tralive-wish-list", JSON.stringify(newWishLists));
+
 }
 
-const clearAllBookings = (email) => {
-    localStorage.removeItem(`bookings_${email}`);
-}
-
-export { addToDb, removeFromDb, clearAllBookings, getStoredBookings, updateDb };
+export {addToWishLists, removeFromWishLists}
     

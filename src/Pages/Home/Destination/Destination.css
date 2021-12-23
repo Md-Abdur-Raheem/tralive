@@ -26,19 +26,25 @@
 }
 
 .book-now-btn{
-    background-color: #4d4d4d;
-    width: fit-content;
-    /* position: relative; */
-    /* left: 1%; */
+    background-color: #00095e;
+    width: 180px;
     border: none;
     color: white;
     padding: 5px 20px;
 }
 
 .book-now-btn:hover{
+    background-color: #4d4d4d;
+    color: white;
+    transition: background-color 1s ease;
+}
+.wish-list-btn{
     background-color: #f6c103;
     color: #00095e;
-    transition: background-color 1s ease;
+}
+.wish-list-btn:hover{
+    background-color: #4d4d4d;
+    color: white;
 }
 
 
