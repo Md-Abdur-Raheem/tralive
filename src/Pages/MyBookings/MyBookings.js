@@ -37,9 +37,9 @@ const MyBookings = () => {
                     <tr>
                     <th>Destination Name</th>
                         <th>Price</th>
-                        <th>Cancel trip</th>
                         <th>Start date</th>
                         <th>End date</th>
+                        <th>Cancel trip</th>
                     </tr>
                 </thead>
                 <tbody>

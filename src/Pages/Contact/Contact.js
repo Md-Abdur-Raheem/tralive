@@ -19,7 +19,7 @@ const Contact = () => {
                     <div className="d-flex align-items-center my-5">
                         <i className="cont-icon fas fa-phone-alt me-3"/>
                         <div className="text-start">
-                        <h4>+10 (78) 738-7093</h4>
+                        <h4>+880 179 7176 635</h4>
                         <p>Call Us Now!</p>
                         </div>
                     </div>
@@ -27,7 +27,7 @@ const Contact = () => {
                         <i className="cont-icon fas fa-envelope me-3"></i>
                         <div className="text-start">
                         <p>Do you have a Question?</p>
-                        <h4>tralive@gmail.com</h4>
+                        <h4>md.raheem2450@gmail.com</h4>
                         </div>
                     </div>
                 </div>
@@ -35,12 +35,12 @@ const Contact = () => {
                 <div className="col-md-8 text-start">
                     <h1 className="mb-5" style={{color:"#00095e", fontFamily: "Josefin Sans"}} >Do Not Use This Form <br /> To Communicate Personal Data.</h1>
                     <div>
-                        <input className="input-field" type="text" placeholder="Your Name"/>
-                        <input className="input-field" type="email" placeholder="Your Email" />
+                        <input className="contact-input-field" type="text" placeholder="Your Name"/>
+                        <input className="contact-input-field" type="email" placeholder="Your Email" />
                     </div>
                     <div>
-                        <input className="input-field" type="number" placeholder="Phone" />
-                        <input className="input-field" type="text" placeholder="Subject" />
+                        <input className="contact-input-field" type="number" placeholder="Phone" />
+                        <input className="contact-input-field" type="text" placeholder="Subject" />
                     </div>
                     <textarea className="text-field" placeholder="Message" cols="80" rows="5"></textarea>
                     <br />

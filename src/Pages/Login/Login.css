@@ -27,6 +27,9 @@
     align-items: center;
 }
 .input-field{
+    width: 300px;
+    height: 50px;
+    margin: 10px;
     border: none;
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.836);

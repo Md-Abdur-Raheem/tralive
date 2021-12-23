@@ -40,7 +40,7 @@ const BookingDestination = () => {
 
         const bookingDate = new Date().toLocaleDateString();
 
-        const newBooking = { name: user.displayName, email: user.email, phone: phoneRef.current.value, bookingDate, tourDuration, destination };
+        const newBooking = { name: user.displayName, email: user.email, phone: phoneRef.current.value, bookingDate, tourDuration, destination, status: "Pending" };
         
         fetch('http://localhost:5000/bookings', {
             method: "POST",
