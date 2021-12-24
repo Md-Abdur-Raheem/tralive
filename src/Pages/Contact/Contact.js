@@ -1,8 +1,25 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import './Contact.css'
+import './Contact.css';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
+
+    const sendEmail = e => {
+        e.preventDefault();
+        console.log(e.target);
+        emailjs.sendForm('service_i4k9o6o', 'template_gdp3vbp', e.target, 'user_PRSqVYWG4ThisNqE215wt')
+            .then((result) => {
+                console.log(result.text);
+                e.target.reset();
+                alert("Email has been sent successfully");
+            }, (error) => {
+                console.log(error.text);
+            });
+        
+        
+    }
+
     return (
         <Container className="mx-auto">
             <div className="contact-container container mb-5"><h1 style={{color:"#00095e"}} className="banner-title text-start fw-bold fs-1">Contact Us</h1></div>
@@ -32,20 +49,20 @@ const Contact = () => {
                     </div>
                 </div>
 
-                <div className="col-md-8 text-start">
+                <form onSubmit={sendEmail} className="col-md-8 text-start">
                     <h1 className="mb-5" style={{color:"#00095e", fontFamily: "Josefin Sans"}} >Do Not Use This Form <br /> To Communicate Personal Data.</h1>
                     <div>
-                        <input className="contact-input-field" type="text" placeholder="Your Name"/>
-                        <input className="contact-input-field" type="email" placeholder="Your Email" />
+                        <input className="contact-input-field" type="text" placeholder="Your Name" name="name"/>
+                        <input className="contact-input-field" type="email" placeholder="Your Email" name="email"/>
                     </div>
                     <div>
-                        <input className="contact-input-field" type="number" placeholder="Phone" />
-                        <input className="contact-input-field" type="text" placeholder="Subject" />
+                        <input className="contact-input-field" type="number" placeholder="Phone" name="phone"/>
+                        <input className="contact-input-field" type="text" placeholder="Subject" name="subject"/>
                     </div>
-                    <textarea className="text-field" placeholder="Message" cols="80" rows="5"></textarea>
+                    <textarea className="text-field" placeholder="Message" cols="80" rows="5" name="message"></textarea>
                     <br />
-                    <button className="hero-btn">Send Mesage</button>
-                </div>
+                    <input type="submit" className="hero-btn" value="Send Message"/>
+                </form>
                 
             </div>
         </Container>
