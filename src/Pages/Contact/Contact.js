@@ -2,19 +2,20 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import './Contact.css';
 import emailjs from 'emailjs-com';
+import { useState } from 'react';
 
 const Contact = () => {
+    const [error, setError] = useState('');
 
     const sendEmail = e => {
         e.preventDefault();
-        console.log(e.target);
-        emailjs.sendForm('service_i4k9o6o', 'template_gdp3vbp', e.target, 'user_PRSqVYWG4ThisNqE215wt')
+        emailjs.sendForm( process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, e.target, process.env.REACT_APP_USER_ID )
             .then((result) => {
                 console.log(result.text);
                 e.target.reset();
                 alert("Email has been sent successfully");
             }, (error) => {
-                console.log(error.text);
+                setError(error.text);
             });
         
         
@@ -63,7 +64,9 @@ const Contact = () => {
                     <br />
                     <input type="submit" className="hero-btn" value="Send Message"/>
                 </form>
-                
+                {
+                    error && <p style={{color: "red"}}>{ error }</p>
+                }
             </div>
         </Container>
     );
