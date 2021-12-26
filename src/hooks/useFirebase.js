@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import initAuthentication from "../firebase/firebase.init";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword  } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, sendPasswordResetEmail  } from "firebase/auth";
 
 initAuthentication();
 const useFirebase = () => {
@@ -61,6 +61,16 @@ const useFirebase = () => {
                 setLoading(false);
                 
         })
+    }
+
+    const resetPassword = (email) => {
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                
+            })
+            .catch((error) => {
+                setError(error.message);
+        });
     }
 
     const signInWithGoogle = (location, history) => {
@@ -137,7 +147,7 @@ const useFirebase = () => {
             .then(data => console.log(data))
     }
 
-    return {user, error, loading, admin, setUser, setError, setLoading, signInWithGoogle, logOut, registerUser, logInUser }
+    return {user, error, loading, admin, setUser, setError, setLoading, signInWithGoogle, logOut, registerUser, logInUser, resetPassword }
 }
 
 export default useFirebase;

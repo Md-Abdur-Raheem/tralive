@@ -5,9 +5,13 @@ import { useHistory, useLocation } from 'react-router';
 import loginBg from '../../media/login.jpg';
 import { useForm } from "react-hook-form";
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import AlertModal from '../Shared/AlertModal/AlertModal'
 
 const Login = () => {
-    const { signInWithGoogle, logInUser } = useAuth();
+    const { signInWithGoogle, logInUser, resetPassword } = useAuth();
+    const [AlertModalShow, setAlertModalShow] = useState(false);
+    const [AlertModalShow2, setAlertModalShow2] = useState(false);
 
     const location = useLocation();
     const history = useHistory();
@@ -22,6 +26,16 @@ const Login = () => {
         logInUser(email, password, location, history)
     };
 
+    const forgotPasssword = () => {
+        const email = document.getElementById("email").value;
+        if (email) {
+            resetPassword(email);
+            setAlertModalShow2(true);
+        } else {
+            setAlertModalShow(true);
+        }
+    }
+
     return (
         <div className="login-container">
             <img className="login-bg" src={loginBg} alt="" />
@@ -30,7 +44,7 @@ const Login = () => {
                     <h2><strong>LOGIN</strong></h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                        <input className="input-field" placeholder="Email" type="email" {...register("email", {required: true})} />
+                        <input id="email" className="input-field" placeholder="Email" type="email" {...register("email", {required: true})} />
                         <br />
                         <input className="input-field" placeholder="Password" type="password" {...register("password", { required: true })} />
                         <br />
@@ -40,6 +54,8 @@ const Login = () => {
                         <input className="hero-btn login-btn" type="submit" value="Login" />
                     </form>
 
+                    <button onClick={forgotPasssword} style={{ backgroundColor: "transparent", border: "none", color:"red" }}><strong>Forgot Password?</strong></button>
+                    <br /><br />
                     <p style={{color:"black"}}><strong>New to tralive? <NavLink to="/register">Register</NavLink></strong></p>
 
                     <p><strong>------------or--------------</strong></p>
@@ -61,6 +77,8 @@ const Login = () => {
                 </div>
             
             </div>
+            <AlertModal show={AlertModalShow} onHide={() => setAlertModalShow(false)} variant="danger">Please type your email address</AlertModal>
+            <AlertModal show={AlertModalShow2} onHide={() => setAlertModalShow2(false)} variant="success">A password reset email have been sent to your email address.</AlertModal>
         </div>
     );
 };

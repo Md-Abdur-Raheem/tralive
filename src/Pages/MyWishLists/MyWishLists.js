@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Container, Row } from 'react-bootstrap';
+import { Card, Container, Row, Spinner } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import  {removeFromWishLists}  from '../../utilities/localStorage';
 
 const MyWishLists = () => {
     const [myWishLists, setMyWishLists] = useState([]);
     const [added, setAdded] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const wishLists = localStorage.getItem('tralive-wish-list');
     
     useEffect(() => {
         fetch(`http://localhost:5000/allDestinations/?wishLists=${wishLists}`)
             .then(res => res.json())
-            .then(data => setMyWishLists(data))
+            .then(data => {
+                setMyWishLists(data)
+                setLoading(false);
+            })
     },[wishLists, added])
     
     console.log(myWishLists);
@@ -26,9 +30,14 @@ const MyWishLists = () => {
         <Container>
             <h1 style={{ color: "#00095e" }}>My Wishlists</h1>
             <Row>
-            {
-                myWishLists.map(wish => <Card className='m-2' key={wish._id} style={{ width: '18rem' }}>
-                <Card.Body>
+                {
+                    loading && <div className='d-flex justify-content-center'>
+                        <Spinner className="my-5" animation="grow" />
+                    </div>
+                }
+                {
+                    myWishLists.map(wish => <Card className='m-2' key={wish._id} style={{ width: '18rem' }}>
+                    <Card.Body>
                         <Card.Title>{wish.name}</Card.Title>
                         <img width={200} height={150} src={wish.img} alt="" />
                         <br /><br />
@@ -38,9 +47,9 @@ const MyWishLists = () => {
                         </Card.Text>
                         <Card.Link style={{textDecoration: 'none'}} as={NavLink} to={`/bookingDestination/${wish._id}`}>Book now</Card.Link>
                         <Card.Link style={{cursor:"pointer", textDecoration:'none'}} onClick={()=>remove(wish._id)}>Remove</Card.Link>
-                        </Card.Body>
-              </Card>)
-            }
+                    </Card.Body>
+                    </Card>)
+                    }
             </Row>
         </Container>
     );
