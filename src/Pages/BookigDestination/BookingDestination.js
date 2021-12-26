@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 import './BookingDestination.css';
 import { DateRangePicker } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; 
+import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import AlertModal from '../Shared/AlertModal/AlertModal'
 import { addToWishLists, removeFromWishLists } from '../../utilities/localStorage'
@@ -18,7 +18,7 @@ const BookingDestination = () => {
     const [tourDuration, setTourDuration] = useState({});
     const [AlertModalShow, setAlertModalShow] = useState(false);
     const [added, setAdded] = useState(false);
-    
+
     const add = id => {
         addToWishLists(id);
         setAdded(true);
@@ -38,20 +38,20 @@ const BookingDestination = () => {
         })
         setTourDuration({startDate: ranges.selection.startDate.toLocaleDateString(), endDate: ranges.selection.endDate.toLocaleDateString()})
     }
-            
+
 
     useEffect(() => {
         fetch(`https://gruesome-village-05256.herokuapp.com/all-destinations/${id}`)
             .then(res => res.json())
         .then(data => setDestination(data))
     }, [id])
-    
+
     const handleConfirm = () => {
 
         const bookingDate = new Date().toLocaleDateString();
 
         const newBooking = { name: user.displayName, email: user.email, phone: phoneRef.current.value, bookingDate, tourDuration, destination, status: "Pending" };
-        
+
         fetch('http://localhost:5000/bookings', {
             method: "POST",
             headers: {
@@ -66,27 +66,33 @@ const BookingDestination = () => {
                 }
             })
     }
+
+    useEffect(() => {
+        document.getElementById('destinationThumb').onload = () => {
+            const img = document.getElementById('destinationThumb');
+            img.style.opacity = "1";
+        }
+    }, []);
+
     return (
         <Container className="App">
             <Row>
                 <Col sm={6}>
-                    <img className="w-100" src={destination?.img} alt="" />
-                </Col>
-                <Col sm={6}>
+                    <img style={{objectFit:"cover",opacity:"0", transition: "opacity 1s linear"}} id='destinationThumb' className="w-100" width={650} height={450} src={destination?.img} alt="" />
+                    <br /><br />
                     <h1>{destination.name}</h1>
                     <p><i className="fas fa-heart"></i> {destination?.loved}</p>
                     <p>{destination?.description}</p>
                     <p>{destination?.time}</p>
                     <p>Price: ${destination?.price}</p>
-
                     {
                         (localStorage.getItem("tralive-wish-list") && JSON.parse(localStorage.getItem("tralive-wish-list")).includes(id)) || added ?
                                 <button onClick={() => remove(id)}  className="book-now-btn"><i style={{color: "#f6c103"}} className="fas fa-minus-circle"></i> Remove</button>
                                 :
                                 <button onClick={() => add(id)} className="book-now-btn"><i style={{color: "#f6c103"}} className="fas fa-star fa-yellow"></i> Add To Wishlist</button>
                     }
-
-                    <br /><br />
+                </Col>
+                <Col sm={6}>
                     <h5 style={{color: "orange", fontWeight: 700, textDecoration: "underline"}}>Confirm destination</h5>
                     <p><b>{user?.displayName}</b></p>
                     <p><b>{user?.email}</b></p>
