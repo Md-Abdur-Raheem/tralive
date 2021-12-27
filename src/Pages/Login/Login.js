@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.css';
 import useAuth from '../../hooks/useAuth';
-import { useHistory, useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import loginBg from '../../media/login.jpg';
 import { useForm } from "react-hook-form";
 import { NavLink } from 'react-router-dom';
@@ -14,16 +14,16 @@ const Login = () => {
     const [AlertModalShow2, setAlertModalShow2] = useState(false);
 
     const location = useLocation();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleGoogleSignIn = () => {
-        signInWithGoogle(location, history);
+        signInWithGoogle(location, navigate);
     }
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         const { email, password } = data;
-        logInUser(email, password, location, history)
+        logInUser(email, password, location, navigate)
     };
 
     const forgotPasssword = () => {

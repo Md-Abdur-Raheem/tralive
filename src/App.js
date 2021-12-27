@@ -1,7 +1,7 @@
 import './App.css';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
 } from "react-router-dom";
 import Home from './Pages/Home/Home';
@@ -31,70 +31,39 @@ function App() {
         <Router>
           <Header></Header>
 
-          <Switch>
+          <Routes>
             
-            <Route exact path="/">
-            <Home></Home>
-            </Route>
+            <Route path="/" element={ <Home/> }/>
 
-            <Route path="/home">
-            <Home></Home>
-            </Route>
+            <Route path="/home" element={ <Home/>}/>
 
-            <Route path="/allDestinations">
-            <AllDestinations></AllDestinations>
-            </Route>
+            <Route path="/allDestinations" element={ <AllDestinations/> }/>
 
+            <Route path="/contact" element={ <Contact/>}/>
 
-            <Route path="/contact">
-            <Contact></Contact>
-            </Route>
+            <Route path="/login" element={ <Login/> }/>
 
-            <Route path="/login">
-            <Login></Login>
-            </Route>
-
-            <Route path="/register">
-            <Register></Register>
-            </Route>
-
-            <AdminRoute path="/addNewDestination">
-              <AddNewDestination></AddNewDestination>
-            </AdminRoute>
+            <Route path="/register" element={<Register />} />
             
-            <PrivateRoute path="/bookingDestination/:id">
-              <BookingDestination></BookingDestination>
-            </PrivateRoute>
+            <Route path="/bookingDestination/:id" element={ <PrivateRoute><BookingDestination/></PrivateRoute> }/>
 
-            <PrivateRoute path="/myBookings">
-              <MyBookings></MyBookings>
-            </PrivateRoute>
+            <Route path="/myBookings" element={ <PrivateRoute><MyBookings/></PrivateRoute>}/>
 
-            <PrivateRoute path="/myWishLists">
-              <MyWishLists></MyWishLists>
-            </PrivateRoute>
+            <Route path="/myWishLists" element={ <PrivateRoute><MyWishLists/></PrivateRoute>}/>
 
-            <AdminRoute path="/manageAllBookings">
-              <ManageAllBookings></ManageAllBookings>
-            </AdminRoute>
+            <Route path="/addNewDestination" element={<AdminRoute><AddNewDestination /></AdminRoute>} />
+            
+            <Route path="/manageAllBookings" element={ <AdminRoute><ManageAllBookings/></AdminRoute>}/>
 
-            <AdminRoute path="/adminAllDestinations">
-              <AdminAllDestination></AdminAllDestination>
-            </AdminRoute>
+            <Route path="/adminAllDestinations" element={ <AdminRoute><AdminAllDestination/></AdminRoute>}/>
 
-            <AdminRoute path="/dashboard">
-              <Dashboard></Dashboard>
-            </AdminRoute>
+            <Route path="/dashboard" element={ <AdminRoute><Dashboard/></AdminRoute>}/>
 
-            <AdminRoute path="/makeAdmin">
-              <MakeAdmin></MakeAdmin>
-            </AdminRoute>
+            <Route path="/makeAdmin" element={ <AdminRoute><MakeAdmin/></AdminRoute>}/>
 
-            <Route path="*">
-              <NotFound></NotFound>
-            </Route>
+            <Route path="*" element={ <NotFound/>}/>
 
-          </Switch>
+          </Routes>
           <Footer></Footer>
         </Router>
      </AuthProvider>

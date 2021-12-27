@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import initAuthentication from "../firebase/firebase.init";
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, sendPasswordResetEmail  } from "firebase/auth";
+// import { useNavigate } from "react-router-dom";
 
 initAuthentication();
 const useFirebase = () => {
@@ -9,9 +10,10 @@ const useFirebase = () => {
     const [loading, setLoading] = useState(true);
     const [admin, setAdmin] = useState(false);
     const auth = getAuth();
+    // let navigate = useNavigate();
 
 
-    const registerUser = (name, email, password, location, history) => {
+    const registerUser = (name, email, password, location, navigate ) => {
         setLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -22,7 +24,7 @@ const useFirebase = () => {
                 saveUserToDb(name, userProfile, 'POST');
 
                 const redirectURL = location?.state?.from?.pathname || "/";
-                history.replace(redirectURL);
+                navigate(redirectURL);
             })
             .catch((error) => {
                 setError(error.message);
@@ -43,7 +45,7 @@ const useFirebase = () => {
     }
 
 
-    const logInUser = (email, password, location, history) => {
+    const logInUser = (email, password, location, navigate) => {
         setLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -51,7 +53,7 @@ const useFirebase = () => {
                 const redirectURL = location?.state?.from?.pathname || "/";
 
                 setUser(user);
-                history.replace(redirectURL);
+                navigate(redirectURL);
                 
             })
             .catch((error) => {
@@ -73,14 +75,14 @@ const useFirebase = () => {
         });
     }
 
-    const signInWithGoogle = (location, history) => {
+    const signInWithGoogle = (location, navigate) => {
         const googleProvider = new GoogleAuthProvider();
         signInWithPopup(auth, googleProvider)
         .then(result => {
             const user = result.user;
 
             const redirectURL = location?.state?.from?.pathname || "/";
-            history.replace(redirectURL);
+            navigate(redirectURL);
 
             setUser(user);
             saveUserToDb(user.displayName, user, 'PUT');
