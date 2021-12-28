@@ -23,6 +23,7 @@ import MakeAdmin from './Pages/MakeAdmin/MakeAdmin';
 import AdminRoute from './Pages/AdminRoute/AdminRoute';
 import NotFound from './Pages/NotFound/NotFound';
 import MyWishLists from './Pages/MyWishLists/MyWishLists';
+import Payment from './Pages/Payment/Payment';
 
 function App() {
   return (
@@ -44,6 +45,8 @@ function App() {
             <Route path="/login" element={ <Login/> }/>
 
             <Route path="/register" element={<Register />} />
+
+            <Route path="/payment" element={<PrivateRoute><Payment /></PrivateRoute>} />
             
             <Route path="/bookingDestination/:id" element={ <PrivateRoute><BookingDestination/></PrivateRoute> }/>
 
