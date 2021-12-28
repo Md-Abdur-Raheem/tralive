@@ -1,13 +1,18 @@
 import React from 'react';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import './Payment.css';
-import bkash from '../../media/bkash.png'
 import { useLocation } from 'react-router-dom';
+import CheckoutForm from './CheckoutForm';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+
+
+const stripePromise = loadStripe('pk_test_51Jw0hLC5oEvRCY62lWyxMUN5YGqcco0HZWyaIRL2moF3g4KgDogZm6NuxSS7FHixQIXz2Z6VcidQxFW7MP2zl3Fs00DIe2yzBL');
 
 const Payment = () => {
     const {state} = useLocation();
-    const [paymnetMethod, setPaymetMethod] = useState('credit-card');
+    
 
     return (
         <Container className='payment-container'>
@@ -64,74 +69,9 @@ const Payment = () => {
                     </div>
                 </Col>
                 <Col>
-                    <h1 style={{ color: "#00095e"}}>Payment Details</h1>
-                    <div className='form-container'>
-                        <div className='btn-container'>
-                            <button onClick={() => { setPaymetMethod('credit-card') }} autoFocus>
-                                <i className="fas fa-credit-card"></i>
-                                <br />
-                                Credit Card
-                            </button>
-                            <button onClick={() => { setPaymetMethod('bkash') }}>
-                                <img src={bkash} style={{ objectFit: "cover" }} width={50} height={20} alt='' />
-                                <br />
-                                Bkash
-                            </button>
-                            <button onClick={() => { setPaymetMethod('net-banking') }}>
-                                <i className="fas fa-mobile-alt"></i>
-                                <br />
-                                Net Banking
-                            </button>
-                        </div>
-                        {
-                            paymnetMethod === "credit-card" && <form className='text-start p-3 credit-card'>
-                                <label className='pb-2' htmlFor="input">
-                                    <b>Card Owner</b>
-                                </label>
-                                <br />
-
-                                <input className='payment-input w-100 me-5 ps-2' type="text" name="" id="" placeholder='Card Owner Name' />
-                                <br />
-
-                                <label className='pb-2 pt-3' htmlFor="input">
-                                    <b>Card Number</b>
-                                </label>
-                                <br />
-
-                                <input className='payment-input w-100 me-5 ps-2' type="text" name="" id="" placeholder='Card Number' />
-                                <br />
-
-                                <div className='d-flex justify-content-between'>
-                                    <div>
-                                        <label className='p-2 pt-3' htmlFor="input">
-                                            <b>Expiration Date</b>
-                                        </label>
-                                        <br />
-
-                                        <input className='payment-input ps-2' type="text" name="" id="" placeholder='MM' />
-                                        <input className='payment-input ps-2' type="text" name="" id="" placeholder='YY' />
-                                    </div>
-                                    <div>
-                                        <label className='p-2 pt-3' htmlFor="input">
-                                            <b>CVV</b>
-                                        </label>
-                                        <br />
-
-                                        <input className='payment-input ps-2' type="text" name="" id=""/>
-                                    </div>
-                                </div>
-                                <input type="submit" className="hero-btn payment-btn" value="Confirm payment"/>
-                            </form>
-                        }
-
-                        {
-                            paymnetMethod === "bkash" && <div>Bkash coming soon</div>
-                        }
-
-                        {
-                            paymnetMethod === "net-banking" && <div>Net banking coming soon</div>
-                        }
-                    </div>
+                <Elements stripe={stripePromise}>
+                        <CheckoutForm price={state.destination.price }/>
+                </Elements>
                 </Col>
            </Row>
         </Container>
