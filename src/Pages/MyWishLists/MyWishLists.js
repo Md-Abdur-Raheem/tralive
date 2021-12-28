@@ -19,8 +19,6 @@ const MyWishLists = () => {
             })
     },[wishLists, added])
     
-    console.log(myWishLists);
-
     const remove = id =>{
         removeFromWishLists(id);
         setAdded(!added);

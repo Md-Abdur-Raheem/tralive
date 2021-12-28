@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import initAuthentication from "../firebase/firebase.init";
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, sendPasswordResetEmail  } from "firebase/auth";
-// import { useNavigate } from "react-router-dom";
 
 initAuthentication();
 const useFirebase = () => {
@@ -10,7 +9,6 @@ const useFirebase = () => {
     const [loading, setLoading] = useState(true);
     const [admin, setAdmin] = useState(false);
     const auth = getAuth();
-    // let navigate = useNavigate();
 
 
     const registerUser = (name, email, password, location, navigate ) => {

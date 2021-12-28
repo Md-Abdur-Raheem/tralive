@@ -8,6 +8,7 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import AlertModal from '../Shared/AlertModal/AlertModal'
 import { addToWishLists, removeFromWishLists } from '../../utilities/localStorage'
+import { useNavigate } from "react-router-dom";
 
 const BookingDestination = () => {
     const { user } = useAuth();
@@ -17,8 +18,12 @@ const BookingDestination = () => {
     const [selectionRange, setSelectionRange] = useState({ startDate: new Date(), endDate: new Date(), key: 'selection' });
     const [tourDuration, setTourDuration] = useState({});
     const [AlertModalShow, setAlertModalShow] = useState(false);
+    const [AlertModalShow2, setAlertModalShow2] = useState(false);
     const [added, setAdded] = useState(false);
+    const navigate = useNavigate();
 
+
+    
     const add = id => {
         addToWishLists(id);
         setAdded(true);
@@ -46,25 +51,37 @@ const BookingDestination = () => {
         .then(data => setDestination(data))
     }, [id])
 
-    const handleConfirm = () => {
+    const proceedToPayment = () => {
 
-        const bookingDate = new Date().toLocaleDateString();
+        const phoneField = document.getElementById('phone').value;
+        if (!phoneField || !tourDuration.startDate || !tourDuration.endDate) {
+            setAlertModalShow2(true);
+        }
+        else {
 
-        const newBooking = { name: user.displayName, email: user.email, phone: phoneRef.current.value, bookingDate, tourDuration, destination, status: "Pending" };
+            const bookingDate = new Date().toLocaleDateString();
+            const newBooking = { name: user.displayName, email: user.email, phone: phoneRef.current.value, bookingDate, tourDuration, destination, status: "Pending" };
 
-        fetch('http://localhost:5000/bookings', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newBooking)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    setAlertModalShow(true);
-                }
-            })
+            navigate("/payment", {state: newBooking });
+        }
+
+
+        
+
+
+        // fetch('http://localhost:5000/bookings', {
+        //     method: "POST",
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(newBooking)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         if (data.insertedId) {
+        //             setAlertModalShow(true);
+        //         }
+        //     })
     }
 
     useEffect(() => {
@@ -96,7 +113,7 @@ const BookingDestination = () => {
                     <h5 style={{color: "orange", fontWeight: 700, textDecoration: "underline"}}>Confirm destination</h5>
                     <p><b>{user?.displayName}</b></p>
                     <p><b>{user?.email}</b></p>
-                    <input className="w-50" style={{ height: 40, padding: 10 }} type="number" placeholder="Entre your phone no." ref={phoneRef}/>
+                    <input className="w-50" style={{ height: 40, padding: 10 }} type="number" id='phone' placeholder="Entre your phone no." ref={phoneRef}/>
                     <br /><br /><br />
                     <h6 style={{ color: "green", fontWeight: 700 }}>Select your tour duration</h6>
                     <br />
@@ -104,11 +121,12 @@ const BookingDestination = () => {
                         ranges={[selectionRange]}
                         onChange={handleSelect}
                     />
-                    <button className="hero-btn" onClick={()=>{handleConfirm()}}>Confirm</button>
+                    <button onClick={proceedToPayment} className="hero-btn">Proceed to Payment</button>
 
                 </Col>
             </Row>
             <AlertModal show={AlertModalShow} onHide={() => setAlertModalShow(false)} variant="success">Your booking placed successfully !!!</AlertModal>
+            <AlertModal show={AlertModalShow2} onHide={() => setAlertModalShow2(false)} variant="danger">Please fill up all the field</AlertModal>
         </Container>
     );
 };

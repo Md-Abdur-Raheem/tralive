@@ -1,3 +1,16 @@
+.info-container{
+    border: 1px solid rgb(219, 216, 216);;
+    max-width: 70%;
+    position: relative;
+    left: 13%;
+    background-color:#212529;
+    padding: 56px 30px 0 30px;
+    height: 580px;
+}
+
+.info{
+    color: #f6c103;
+}
 
 .form-container{
     border: 1px solid rgb(219, 216, 216);;
@@ -6,7 +19,9 @@
     left: 13%;
     background-color:rgba(226, 225, 225, 0.753);
     padding: 26px 30px 0 30px;
+    height: 580px;
 }
+
 .btn-container{
     display: flex;
     justify-content: space-evenly;
@@ -14,25 +29,28 @@
     margin: 10px;
     padding: 20px 5px;
 }
+
 .btn-container button{
     border: none;
     padding: 7px 25px;
-    border-radius: 5px;
-    /* margin: 0px 10px; */
     width: 200px;
+    margin: 1px;
     
 }
+
 .btn-container button:focus{
     background-color: #f6c103;
     outline: none;
 }
+
 .payment-input{
     height: 40px;
     outline: none;
     border: 1px solid rgb(219, 216, 216);
 }
+
 .payment-btn{
     margin: 20px;
     position: relative;
-    left: 35%;
+    left: 20%;
 }
