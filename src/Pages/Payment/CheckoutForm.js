@@ -2,21 +2,23 @@ import React, { useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
 import bkash from '../../media/bkash.png'
-import AlertModal from '../Shared/AlertModal/AlertModal';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = (props) => {
     const [paymnetMethod, setPaymetMethod] = useState('credit-card');
     const stripe = useStripe();
     const elements = useElements();
     const [isProcessing, setProcessingTo] = useState(false);
-    const [checkoutError, setCheckoutError] = useState();
+    const [checkoutError, setCheckoutError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
 
-    const [AlertModalShow, setAlertModalShow] = useState(false);
+    const price = props.booking.destination.price;
+    const { name, email, phone, bookingDate, tourDuration, destination, status } = props.booking;
 
-    const  price  = props.booking.destination.price;
-    // console.log(price);
+    const navigate = useNavigate();
+
+
 
     useEffect(() => {
         fetch('http://localhost:5000/create-payment-intent', {
@@ -67,12 +69,38 @@ const CheckoutForm = (props) => {
             },
             },
         })
-            .then(function (result) {
-            console.log(result);
-            if (result.paymentIntent.status === 'succeeded') {
-                setProcessingTo(false);
-                setAlertModalShow(true);
-            };
+            .then(async function (result) {
+                console.log(result);
+                if (result.paymentIntent.status === 'succeeded') {
+                    setProcessingTo(false);
+                    const payBtn = document.getElementById("pay-btn");
+                    payBtn.setAttribute("disabled", true);
+                    payBtn.style.display = "none";
+
+                    const newBooking = {
+                        name, email, phone, bookingDate, tourDuration, destination, status, payment: "Paid",
+                        transaction_id: result.paymentIntent.id, payment_method: result.paymentIntent.payment_method_types[0],
+                        card_details: paymentMethod.card
+                    };
+
+                    fetch('http://localhost:5000/bookings', {
+                        method: "POST",
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(newBooking)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                navigate('/success');
+                            }
+                  })
+                }
+                else {
+                    setCheckoutError('An error occured. Please try again');
+                    return;
+                }
         });
 
 
@@ -138,7 +166,7 @@ const CheckoutForm = (props) => {
                             onChange={handleCardDetailsChange}
                         />
                         {
-                            !isProcessing ? <input type="submit" className="hero-btn payment-btn" value="Confirm payment" disabled={!stripe} />
+                            !isProcessing ? <input type="submit" id="pay-btn" className="hero-btn payment-btn" value="Confirm payment" disabled={!stripe} />
                                 : <button className='hero-btn payment-btn d-flex justify-content-center align-items-center'>
                                     <div className="spinner-border text-primary me-3" role="status"></div>
                                     <span>Processing...</span>
@@ -161,19 +189,7 @@ const CheckoutForm = (props) => {
                         paymnetMethod === "net-banking" && <div>Mobile banking coming soon</div>
                     }
                 </div>
-            
-                    <AlertModal show={AlertModalShow} onHide={() => setAlertModalShow(false)} variant="success">
-                        <div className="success-checkmark">
-                            <div className="check-icon">
-                                <span className="icon-line line-tip"></span>
-                                <span className="icon-line line-long"></span>
-                                <div className="icon-circle"></div>
-                                <div className="icon-fix"></div>
-                            </div>
-                            </div>
-                            <strong>Your booking placed successfully!!!</strong>
-                    </AlertModal>        
-                </div>
+        </div>
     );
 };
 

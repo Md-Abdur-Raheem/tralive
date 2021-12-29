@@ -24,6 +24,7 @@ import AdminRoute from './Pages/AdminRoute/AdminRoute';
 import NotFound from './Pages/NotFound/NotFound';
 import MyWishLists from './Pages/MyWishLists/MyWishLists';
 import Payment from './Pages/Payment/Payment';
+import Success from './Pages/Success/Success';
 
 function App() {
   return (
@@ -52,7 +53,9 @@ function App() {
 
             <Route path="/myBookings" element={ <PrivateRoute><MyBookings/></PrivateRoute>}/>
 
-            <Route path="/myWishLists" element={ <PrivateRoute><MyWishLists/></PrivateRoute>}/>
+            <Route path="/myWishLists" element={<PrivateRoute><MyWishLists /></PrivateRoute>} />
+            
+            <Route path="/success" element={ <PrivateRoute><Success/></PrivateRoute>}/>
 
             <Route path="/addNewDestination" element={<AdminRoute><AddNewDestination /></AdminRoute>} />
             

@@ -62,7 +62,7 @@ const Payment = () => {
                                 </tr>
                                 <tr>
                                     <td><em>Payment Status</em></td>
-                                    <td className="info">Unpaid</td>
+                                    <td className="info">{state.payment}</td>
                                 </tr>
                             </tbody>
                         </Table>

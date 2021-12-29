@@ -57,13 +57,13 @@
 
 /* success modal tick mark style*/
 .success-checkmark {
-    width: 80px;
-    height: 115px;
+    width: 100px;
+    height: 150px;
     margin: 0 auto;
     }
     .check-icon {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
         position: relative;
         border-radius: 50%;
         box-sizing: content-box;
@@ -102,16 +102,16 @@
             z-index: 10;
         }
         .icon-line.line-tip {
-                top: 46px;
-                left: 14px;
+                top: 50px;
+                left: 26px;
                 width: 25px;
                 transform: rotate(45deg);
                 animation: icon-line-tip 0.75s;
             }
             
             .icon-line.line-long {
-                top: 38px;
-                right: 8px;
+                top: 42px;
+                right: 14px;
                 width: 47px;
                 transform: rotate(-45deg);
                 animation: icon-line-long 0.75s;
@@ -121,8 +121,8 @@
             top: -4px;
             left: -4px;
             z-index: 10;
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             position: absolute;
             box-sizing: content-box;
@@ -179,8 +179,8 @@
     }
     100% {
         width: 25px;
-        left: 14px;
-        top: 45px;
+        left: 26px;
+        top: 50px;
     }
 }
 
@@ -202,7 +202,7 @@
     }
     100% {
         width: 47px;
-        right: 8px;
-        top: 38px;
+        right: 14px;
+        top: 42px;
     }
 }

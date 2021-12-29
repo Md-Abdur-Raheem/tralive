@@ -89,7 +89,7 @@ const ManageAllBookings = () => {
                                <td
                                    style={{ color: b.status === "Pending" ? "orange" : b.status=== "On going" ? "blue" : "green"}}
                                >{b.status}</td>
-                                <td>Unpaid</td>
+                                <td>{b?.payment }</td>
                                <td className='d-flex justify-content-center'>
                                    <button onClick={() => { setModalShow(true); setDeleteId(b._id) }} className="btn btn-danger me-5">Delete</button>
                                 <DropdownButton id="dropdown-basic-button" title="Update Status" bg="warning">
