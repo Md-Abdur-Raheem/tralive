@@ -69,9 +69,12 @@ const Payment = () => {
                     </div>
                 </Col>
                 <Col>
-                <Elements stripe={stripePromise}>
-                        <CheckoutForm price={state.destination.price }/>
-                </Elements>
+                    {
+                        state.destination.price &&
+                            <Elements stripe={stripePromise}>
+                                <CheckoutForm booking={ state }/>
+                            </Elements>
+                    }
                 </Col>
            </Row>
         </Container>
