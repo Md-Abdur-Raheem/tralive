@@ -12,7 +12,6 @@ const Banner = () => {
                 <NavLink to ="/allDestinations"><button className="hero-btn">Explore Destinations</button></NavLink>
             </div>
             <img className="car" src={car} alt="" />
-            
         </div>
     );
 };

@@ -32,9 +32,9 @@ const AllDestinations = () => {
             <Container>
                 {
                     allDestinations.length ?
-                    <Row className="p-5 m-0 container gy-5">
+                    <Row className="container gy-lg-5 p-0 m-0">
                     {
-                        allDestinations.map(destination => <Col  key={destination._id} lg={4}>
+                        allDestinations.map(destination => <Col  key={destination._id} lg={4} md={12}>
                             <Card className="destination text-center h-100 pb-5 m-2">
                             <div className="image-container">
                                 <Card.Img className="destination-image" variant="top" src={destination.img} />
@@ -53,9 +53,9 @@ const AllDestinations = () => {
                                 <br />
                                 {
                                     (localStorage.getItem("tralive-wish-list") && JSON.parse(localStorage.getItem("tralive-wish-list")).includes(destination._id)) ?
-                                            <button onClick={() => remove(destination._id)} style={{marginLeft: 90}} className="book-now-btn"><i style={{color: "#f6c103"}} className="fas fa-minus-circle"></i> Remove</button>
+                                            <button onClick={() => remove(destination._id)} className="book-now-btn wish-btn-2"><i style={{color: "#f6c103"}} className="fas fa-minus-circle"></i> Remove</button>
                                             :
-                                            <button onClick={() => add(destination._id)} style={{marginLeft: 90}} className="book-now-btn"><i style={{color: "#f6c103"}} className="fas fa-star fa-yellow"></i> Add To Wishlist</button>
+                                            <button onClick={() => add(destination._id)} className="book-now-btn wish-btn-2"><i style={{color: "#f6c103"}} className="fas fa-star fa-yellow"></i> Add To Wishlist</button>
                                 }
                         </Card>
                         

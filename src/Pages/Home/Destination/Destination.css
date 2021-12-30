@@ -47,33 +47,72 @@
     color: white;
 }
 
+.wish-btn{
+    margin-left: 97px;
+}
+
 
 /* ----------Media Query---------- */
 
 /* Media query for extra small device */
-@media only screen and (max-width:575px) {
+@media only screen and (max-width:350px) {
     .book-now-btn{
         left: 22%;
     }
+    .wish-btn{
+        margin-left: 0px;
+    }
+}
 
     /* Media query for medium device */
-@media only screen and (min-width:768px) and (max-width:991px) {
+@media only screen and (min-width:351px) and (max-width:369px) {
+    .wish-btn{
+        margin-left: 17px;
+    }
 
+}
+    /* Media query for medium device */
+@media only screen and (min-width:370px) and (max-width:420px) {
+    .wish-btn{
+        margin-left: 27px;
+    }
+
+}
+@media only screen and (min-width:401px) and (max-width:450px) {
+    .wish-btn{
+        margin-left: 52px;
+    }
+
+}
+    /* Media query for medium device */
+@media only screen and (min-width:768px) and (max-width:991px) {
     .book-now-btn{
         position: relative;
         left: 0;
+    }
+    .wish-btn{
+        margin-left: 0px;
     }
 
 }
 
 /* Media query for large device */
 @media only screen and (min-width:992px) and (max-width:1199px) {
-
     .book-now-btn{
         position: relative;
         left: 5%;
     }
+    .wish-btn{
+        margin-left: 37px;
+    }
+
+}
+
+/* Media query for large device */
+@media only screen and (min-width:1200px) and (max-width:1300px) {
+    .wish-btn{
+        margin-left: 67px;
+    }
 
 }
    
-}

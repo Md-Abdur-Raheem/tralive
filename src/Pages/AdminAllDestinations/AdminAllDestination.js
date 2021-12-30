@@ -36,35 +36,37 @@ const AdminAllDestination = () => {
     }
     return (
         <div className="container">
-        <h1 style={{color:"#00095e", marginBottom: 30}}>All Destinations</h1>
-        <Table striped bordered hover className="w-75 container">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Thumbnails</th>
-                    <th>Destination Name</th>
-                    <th>Price</th>
-                    <th>Time</th>
-                    <th>Loved By</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                        allDestinations.map((destination, index) => <tr key={destination._id}>
-                                        <td>{index + 1}</td>
-                                        <td><img src={destination.img} style={{objectFit:"cover", width:"100px", height:"100px" }} alt="This img is not available"/></td>
-                                        <td>{destination.name}</td>
-                                        <td>${destination.price}</td>
-                                        <td>{destination.time}</td>
-                                        <td>{destination.loved}</td>
-                                    <td>
-                                        <button onClick={() => { setModalShow(true); setDeleteId(destination._id)}} className="btn btn-danger">Delete</button>
-                                    </td>
-                    </tr>)
-                }
-            </tbody>
-        </Table>
+            <h1 style={{color:"#00095e", marginBottom: 30}}>All Destinations</h1>
+            <div style={{overflowX:"scroll"}}>
+                <Table striped bordered hover className="w-75 container">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Thumbnails</th>
+                            <th>Destination Name</th>
+                            <th>Price</th>
+                            <th>Time</th>
+                            <th>Loved By</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            allDestinations.map((destination, index) => <tr key={destination._id}>
+                                            <td>{index + 1}</td>
+                                            <td><img src={destination.img} style={{objectFit:"cover", width:"100px", height:"100px" }} alt="This img is not available"/></td>
+                                            <td>{destination.name}</td>
+                                            <td>${destination.price}</td>
+                                            <td>{destination.time}</td>
+                                            <td>{destination.loved}</td>
+                                            <td>
+                                                <button onClick={() => { setModalShow(true); setDeleteId(destination._id)}} className="btn btn-danger">Delete</button>
+                                            </td>
+                                        </tr>)
+                        }
+                    </tbody>
+                </Table>
+        </div>
         <VerticalModal show={modalShow} onHide={() => { setModalShow(false); setDeleteId('')}} deletedestination="deleteDestination" handledelete={handleDelete}>
             <p>Are you sure you want to delete this destination?</p>
         </VerticalModal>

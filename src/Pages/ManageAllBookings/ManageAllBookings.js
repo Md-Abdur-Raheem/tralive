@@ -57,27 +57,28 @@ const ManageAllBookings = () => {
 
     return (
         <div>
-            <h1 style={{color:"#00095e", marginBottom: 30}}>Manage All Bookings</h1>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>User Name</th>
-                        <th>User Email</th>
-                        <th>Contact No.</th>
-                        <th>Booking to</th>
-                        <th>Booking Date</th>
-                        <th>Starting Date</th>
-                        <th>Ending Date</th>
-                        <th>Status</th>
-                        <th>Payment Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        {
-                        bookings.map((b, i) => <tr key={b._id}>
-                               
+            <h1 style={{ color: "#00095e", marginBottom: 30, position:"sticky"}}>Manage All Bookings</h1>
+            <div style={{overflowX:"scroll"}}>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User Name</th>
+                            <th>User Email</th>
+                            <th>Contact No.</th>
+                            <th>Booking to</th>
+                            <th>Booking Date</th>
+                            <th>Starting Date</th>
+                            <th>Ending Date</th>
+                            <th>Status</th>
+                            <th>Payment Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {
+                            bookings.map((b, i) => <tr key={b._id}>
+                                
                                 <td>{i +1}</td>
                                 <td>{b.name}</td>
                                 <td>{b.email}</td>
@@ -86,27 +87,27 @@ const ManageAllBookings = () => {
                                 <td>{b.bookingDate}</td>
                                 <td>{b.tourDuration.startDate}</td>
                                 <td>{b.tourDuration.endDate}</td>
-                               <td
-                                   style={{ color: b.status === "Pending" ? "orange" : b.status=== "On going" ? "blue" : "green"}}
-                               >{b.status}</td>
+                                <td style={{ color: b.status === "Pending" ? "orange" : b.status=== "On going" ? "blue" : "green"}}
+                                >{b.status}</td>
                                 <td>{b?.payment }</td>
-                               <td className='d-flex justify-content-center'>
-                                   <button onClick={() => { setModalShow(true); setDeleteId(b._id) }} className="btn btn-danger me-5">Delete</button>
-                                <DropdownButton id="dropdown-basic-button" title="Update Status" bg="warning">
-                                    <Dropdown.Item onClick={()=>updateStatus("Pending", b._id)}>Pending</Dropdown.Item>
-                                    <Dropdown.Item onClick={()=>updateStatus("On going", b._id)}>On going</Dropdown.Item>
-                                    <Dropdown.Item onClick={()=>updateStatus("Completed", b._id)}>Completed</Dropdown.Item>
-                                </DropdownButton>
-                               </td>
-                           </tr>)
-                           
-                        }
-                </tbody>
-            </Table>
-            <VerticalModal show={modalShow} onHide={() => { setModalShow(false); setDeleteId('')}} delete={"delete"} handledeletetrip={handleDelete}>
-                <p>Are you sure you want delete this trip?</p>
-            </VerticalModal>
-            <AlertModal show={AlertModalShow} onHide={() => setAlertModalShow(false)} variant="success">Trip deleted successfully !!!</AlertModal>
+                                <td className='d-flex justify-content-center'>
+                                    <button onClick={() => { setModalShow(true); setDeleteId(b._id) }} className="btn btn-danger me-5">Delete</button>
+                                    <DropdownButton id="dropdown-basic-button" title="Update Status" bg="warning">
+                                        <Dropdown.Item onClick={()=>updateStatus("Pending", b._id)}>Pending</Dropdown.Item>
+                                        <Dropdown.Item onClick={()=>updateStatus("On going", b._id)}>On going</Dropdown.Item>
+                                        <Dropdown.Item onClick={()=>updateStatus("Completed", b._id)}>Completed</Dropdown.Item>
+                                    </DropdownButton>
+                                </td>
+                            </tr>)
+                            
+                            }
+                    </tbody>
+                </Table>
+                <VerticalModal show={modalShow} onHide={() => { setModalShow(false); setDeleteId('')}} delete={"delete"} handledeletetrip={handleDelete}>
+                    <p>Are you sure you want delete this trip?</p>
+                </VerticalModal>
+                <AlertModal show={AlertModalShow} onHide={() => setAlertModalShow(false)} variant="success">Trip deleted successfully !!!</AlertModal>
+            </div>
         </div>
     );
 };

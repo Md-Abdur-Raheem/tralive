@@ -64,7 +64,7 @@ const AddNewDestination = () => {
     return (
         <Container>
             <h1 style={{color:"#00095e", marginBottom: 30}}>Add New Destination</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} style={{overflowX:"scroll"}}>
                 <table className="container" style={{fontFamily:"Josefin Sans", fontWeight:'700'}}>
                     <tbody>
                         <tr>
@@ -79,7 +79,6 @@ const AddNewDestination = () => {
                             <td><label className="mb-3">Thumbnail:</label></td>
                             <td>
                                 <input className="ms-0 py-1 mb-3" type="file" required onChange={(e) => { setImage(e.target.files[0]) }}/>
-                                {/* <input className="py-1 mb-3" type="submit" disabled={control} value="Upload" onClick={uploadImage} /> */}
                             </td>
                         </tr>
                         <tr>

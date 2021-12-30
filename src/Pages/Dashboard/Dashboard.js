@@ -54,13 +54,13 @@ const Dashboard = () => {
                                 <Offcanvas.Title>Navigate</Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
-                                <NavLink to="manageAllBookings"><button className='side-nav-btn'>Manage All Booking</button></NavLink>
+                                <NavLink to="manageAllBookings"><button onClick={screenSize < 1440 && toggleShow} className='side-nav-btn'>Manage All Booking</button></NavLink>
                                 <br /><br />
-                                <NavLink to="adminAllDestinations"><button className='side-nav-btn'>All Destinations</button></NavLink>
+                                <NavLink to="adminAllDestinations"><button onClick={screenSize < 1440 && toggleShow} className='side-nav-btn'>All Destinations</button></NavLink>
                                 <br /><br />
-                                <NavLink to="addNewDestination"><button className='side-nav-btn'>Add New Destination</button></NavLink>
+                                <NavLink to="addNewDestination"><button onClick={screenSize < 1440 && toggleShow} className='side-nav-btn'>Add New Destination</button></NavLink>
                                 <br /><br />
-                                <NavLink to="makeAdmin"><button className='side-nav-btn'>Make Admin</button></NavLink>
+                                <NavLink to="makeAdmin"><button onClick={screenSize < 1440 && toggleShow} className='side-nav-btn'>Make Admin</button></NavLink>
                             </Offcanvas.Body>
                         </Offcanvas>))
                         

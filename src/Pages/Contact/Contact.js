@@ -30,22 +30,22 @@ const Contact = () => {
                     <div className="d-flex align-items-center my-5">
                         <i className="cont-icon fas fa-map-marker-alt me-3"/>
                         <div className="text-start">
-                        <h4>Address</h4>
-                        <p>205/3, Tazlane, Mirpur,<br /> Dhaka-1216</p>
+                            <h4>Address</h4>
+                            <p>205/3, Tazlane, Mirpur,<br /> Dhaka-1216</p>
                         </div>
                     </div>
                     <div className="d-flex align-items-center my-5">
                         <i className="cont-icon fas fa-phone-alt me-3"/>
                         <div className="text-start">
-                        <h4>+880 179 7176 635</h4>
-                        <p>Call Us Now!</p>
+                            <h4>+880 179 7176 635</h4>
+                            <p>Call Us Now!</p>
                         </div>
                     </div>
                     <div className="d-flex align-items-center my-5">
                         <i className="cont-icon fas fa-envelope me-3"></i>
                         <div className="text-start">
-                        <p>Do you have a Question?</p>
-                        <h4>md.raheem2450@gmail.com</h4>
+                            <p>Do you have a Question?</p>
+                            <h4>Feel free to message us...</h4>
                         </div>
                     </div>
                 </div>
