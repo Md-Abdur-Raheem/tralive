@@ -57,15 +57,15 @@ function App() {
             
             <Route path="/success" element={ <PrivateRoute><Success/></PrivateRoute>}/>
 
-            <Route path="/addNewDestination" element={<AdminRoute><AddNewDestination /></AdminRoute>} />
+            <Route path="/dashboard/*" element={<AdminRoute><Dashboard /></AdminRoute>}>
+              <Route path="" element={<AdminRoute><ManageAllBookings /></AdminRoute>}/>
+              <Route path="manageAllBookings" element={<AdminRoute><ManageAllBookings/></AdminRoute>} />
+              <Route path="adminAllDestinations" element={<AdminAllDestination/>} />
+              <Route path="addNewDestination" element={<AddNewDestination/>} />
+              <Route path="makeAdmin" element={<MakeAdmin/>} />
+            </Route>
+
             
-            <Route path="/manageAllBookings" element={ <AdminRoute><ManageAllBookings/></AdminRoute>}/>
-
-            <Route path="/adminAllDestinations" element={ <AdminRoute><AdminAllDestination/></AdminRoute>}/>
-
-            <Route path="/dashboard" element={ <AdminRoute><Dashboard/></AdminRoute>}/>
-
-            <Route path="/makeAdmin" element={ <AdminRoute><MakeAdmin/></AdminRoute>}/>
 
             <Route path="*" element={ <NotFound/>}/>
 

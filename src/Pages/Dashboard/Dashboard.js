@@ -1,10 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Col, Container, Offcanvas, Row } from 'react-bootstrap';
-import AddNewDestination from '../AddNewDestination/AddNewDestination';
-import AdminAllDestination from '../AdminAllDestinations/AdminAllDestination';
-import MakeAdmin from '../MakeAdmin/MakeAdmin';
-import ManageAllBookings from '../ManageAllBookings/ManageAllBookings';
+import { NavLink, Outlet } from 'react-router-dom';
 import './Dashboaed.css'
 
 
@@ -17,7 +14,6 @@ const options = [
 ]
 
 const Dashboard = () => {
-    const [render, setRender] = useState('ManageAllBookings');
     const [screenSize, setScreenSize] = useState(window.innerWidth);
     const [show, setShow] = useState(true);
     
@@ -45,13 +41,6 @@ const Dashboard = () => {
         setShow(!show)
     }
 
-    const handleClick = (renderElement) => {
-        setRender(renderElement);
-        if (screenSize < 1440) {
-            toggleShow();
-        }
-        
-    }
     
     return (
         <Container className="dashboard-container">
@@ -65,13 +54,13 @@ const Dashboard = () => {
                                 <Offcanvas.Title>Navigate</Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
-                                <button className='side-nav-btn' onClick={()=>handleClick('ManageAllBookings')}>Manage All Booking</button>
+                                <NavLink to="manageAllBookings"><button className='side-nav-btn'>Manage All Booking</button></NavLink>
                                 <br /><br />
-                                <button className='side-nav-btn' onClick={()=>handleClick('AllDestinations')}>All Destinations</button>
+                                <NavLink to="adminAllDestinations"><button className='side-nav-btn'>All Destinations</button></NavLink>
                                 <br /><br />
-                                <button className='side-nav-btn' onClick={()=>handleClick('AddNewDestination')}>Add New Destination</button>
+                                <NavLink to="addNewDestination"><button className='side-nav-btn'>Add New Destination</button></NavLink>
                                 <br /><br />
-                                <button className='side-nav-btn' onClick={()=>handleClick('MakeAdmin')}>Make Admin</button>
+                                <NavLink to="makeAdmin"><button className='side-nav-btn'>Make Admin</button></NavLink>
                             </Offcanvas.Body>
                         </Offcanvas>))
                         
@@ -82,18 +71,7 @@ const Dashboard = () => {
                 </Col>
 
                 <Col lg={12} sm={10} md={12}>
-                    {
-                        render === "ManageAllBookings" && <ManageAllBookings/> 
-                    }
-                    {
-                        render === "AllDestinations" && <AdminAllDestination/>
-                    }
-                    {
-                        render === "AddNewDestination" && <AddNewDestination/>
-                    }
-                    {
-                        render === "MakeAdmin" && <MakeAdmin/>
-                    }
+                    <Outlet/>
                 </Col>
             </Row>
         </Container>
