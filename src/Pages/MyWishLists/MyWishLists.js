@@ -11,7 +11,7 @@ const MyWishLists = () => {
     const wishLists = localStorage.getItem('tralive-wish-list');
     
     useEffect(() => {
-        fetch(`http://localhost:5000/allDestinations/?wishLists=${wishLists}`)
+        fetch(`https://gruesome-village-05256.herokuapp.com/allDestinations/?wishLists=${wishLists}`)
             .then(res => res.json())
             .then(data => {
                 setMyWishLists(data)

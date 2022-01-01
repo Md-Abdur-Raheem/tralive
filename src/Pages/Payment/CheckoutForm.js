@@ -21,7 +21,7 @@ const CheckoutForm = (props) => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://gruesome-village-05256.herokuapp.com/create-payment-intent', {
             method: "POST",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({price})
@@ -83,7 +83,7 @@ const CheckoutForm = (props) => {
                         card_details: paymentMethod.card
                     };
 
-                    fetch('http://localhost:5000/bookings', {
+                    fetch('https://gruesome-village-05256.herokuapp.com/bookings', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json'

@@ -13,7 +13,7 @@ const ManageAllBookings = () => {
 
     useEffect(() => {
         setControl(true);
-        fetch('http://localhost:5000/allBookings')
+        fetch('https://gruesome-village-05256.herokuapp.com/allBookings')
             .then(res => res.json())
             .then(data => {
                 setBookings(data)
@@ -24,7 +24,7 @@ const ManageAllBookings = () => {
 
     const handleDelete = () => {
         setModalShow(true);
-        fetch(`http://localhost:5000/all-bookings/${deleteId}`, {
+        fetch(`https://gruesome-village-05256.herokuapp.com/all-bookings/${deleteId}`, {
             method: "DELETE",
             headers: {
                 'Content-type': "application/json"
@@ -42,7 +42,7 @@ const ManageAllBookings = () => {
     }
     
     const updateStatus = (status, id) => {
-        fetch(`http://localhost:5000/all-bookings/${id}`, {
+        fetch(`https://gruesome-village-05256.herokuapp.com/all-bookings/${id}`, {
             method: "PUT",
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify({ status })

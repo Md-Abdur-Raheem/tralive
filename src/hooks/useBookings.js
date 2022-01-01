@@ -10,7 +10,7 @@ const useBookings = (control) => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/bookings/${user.email}`)
+        fetch(`https://gruesome-village-05256.herokuapp.com/bookings/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setUsersBookings(data)

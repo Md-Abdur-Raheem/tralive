@@ -14,7 +14,7 @@ const MyBookings = () => {
     
 
     const handleCancelTrip = () => {
-        fetch(`http://localhost:5000/bookings/${cancelTripId}`, {
+        fetch(`https://gruesome-village-05256.herokuapp.com/bookings/${cancelTripId}`, {
             method: "DELETE",
             headers: {
                 'Content-type': "application/json"

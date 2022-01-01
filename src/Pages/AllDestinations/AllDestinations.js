@@ -9,7 +9,7 @@ const AllDestinations = () => {
     const [added, setAdded] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/all-destinations')
+        fetch('https://gruesome-village-05256.herokuapp.com/all-destinations')
             .then(res => res.json())
             .then(data => {
                 setAllDestinations(data)

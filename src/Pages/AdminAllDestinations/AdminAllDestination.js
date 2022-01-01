@@ -20,7 +20,7 @@ const AdminAllDestination = () => {
 
 
     const handleDelete = () => {
-        fetch(`http://localhost:5000/all-destinations/${deleteId}`, {
+        fetch(`https://gruesome-village-05256.herokuapp.com/all-destinations/${deleteId}`, {
             method: 'DELETE',
             headers: {"Content-type" : "application/json"}
         })

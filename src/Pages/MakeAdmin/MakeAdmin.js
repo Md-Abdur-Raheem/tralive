@@ -10,7 +10,7 @@ const MakeAdmin = () => {
     const [control, setControl] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/adminUsers')
+        fetch('https://gruesome-village-05256.herokuapp.com/adminUsers')
             .then(res => res.json())
             .then(data => setAdmins(data));
     },[control])
@@ -20,7 +20,7 @@ const MakeAdmin = () => {
     const makeAdmin = e => {
     
         const email = emailRef.current.value;
-        fetch('http://localhost:5000/adminUsers', {
+        fetch('https://gruesome-village-05256.herokuapp.com/adminUsers', {
             method: "POST",
             headers: { 'content-type': "application/json" },
             body: JSON.stringify({email})

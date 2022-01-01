@@ -120,7 +120,7 @@ const useFirebase = () => {
         setLoading(true);
         if(user.email){
             const email = user.email;
-            fetch(`http://localhost:5000/checkAdmin/${email}`)
+            fetch(`https://gruesome-village-05256.herokuapp.com/checkAdmin/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.admin) {
@@ -138,7 +138,7 @@ const useFirebase = () => {
 
     const saveUserToDb = (name, userProp, method) => {
         const newUser = { Id: userProp.uid, Name: name, Email: userProp.email, Email_Verified: userProp.emailVerified };
-        fetch('http://localhost:5000/users', {
+        fetch('https://gruesome-village-05256.herokuapp.com/users', {
             method: method,
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newUser)
