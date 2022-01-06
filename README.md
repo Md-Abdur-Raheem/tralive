@@ -11,6 +11,6 @@ Trallive unlock the best possibilities for each individual traveler and each typ
 
 # License & Copyright
 
-&copy Md. Abdur Raheem
+© Md. Abdur Raheem
 
 Licensed under [Apache License Version 2.0, January 2004](LICENSE)
