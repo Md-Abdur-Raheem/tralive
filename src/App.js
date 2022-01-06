@@ -48,6 +48,7 @@ const AdminAllDestination = React.lazy(() => import('./Pages/AdminAllDestination
 const AddNewDestination = React.lazy(() => import('./Pages/AddNewDestination/AddNewDestination'));
 const MakeAdmin = React.lazy(() => import('./Pages/MakeAdmin/MakeAdmin'));
 const NotFound = React.lazy(() => import('./Pages/NotFound/NotFound'));
+const EmailVerification = React.lazy(() => import('./Pages/EmailVerification/EmailVerification'));
 
 function App() {
   return (
@@ -57,8 +58,8 @@ function App() {
           <Header></Header>
 
           <React.Suspense fallback={
-            <div class="spinner-border text-warning" role="status">
-              <span class="visually-hidden">Loading...</span>
+            <div className="spinner-border text-warning" role="status">
+              <span className="visually-hidden">Loading...</span>
             </div>}>
           <Routes>
             
@@ -73,6 +74,8 @@ function App() {
               <Route path="/login" element={ <Login/> }/>
 
               <Route path="/register" element={<Register />} />
+
+              <Route path="/emailVerification" element={<EmailVerification />} />
 
               <Route path="/payment" element={<PrivateRoute><Payment /></PrivateRoute>} />
 

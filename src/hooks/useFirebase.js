@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react"
 import initAuthentication from "../firebase/firebase.init";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, sendPasswordResetEmail  } from "firebase/auth";
+import {
+    getAuth, signInWithPopup, GoogleAuthProvider,
+    onAuthStateChanged, signOut, createUserWithEmailAndPassword,
+    updateProfile, signInWithEmailAndPassword, sendPasswordResetEmail,
+    sendEmailVerification
+} from "firebase/auth";
 
 initAuthentication();
 const useFirebase = () => {
@@ -8,6 +13,7 @@ const useFirebase = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
     const [admin, setAdmin] = useState(false);
+    const [emailVerified, setEmailVerified] = useState(false);
     const auth = getAuth();
 
 
@@ -21,8 +27,12 @@ const useFirebase = () => {
                 setUser(user);
                 saveUserToDb(name, userProfile, 'POST');
 
-                const redirectURL = location?.state?.from?.pathname || "/";
-                navigate(redirectURL);
+                // const redirectURL = location?.state?.from?.pathname || "/";
+                // navigate(redirectURL);
+
+                sendVerificationEmail(userCredential.user, navigate);
+
+
             })
             .catch((error) => {
                 setError(error.message);
@@ -60,6 +70,20 @@ const useFirebase = () => {
             .finally(() => {
                 setLoading(false);
                 
+        })
+    }
+
+    const sendVerificationEmail = (currentUser, navigate) => {
+        sendEmailVerification(currentUser)
+            .then(() => {
+                setLoading(false);
+                navigate("/emailVerification");
+            })
+            .catch(error => {
+                setError(error.message);
+            })
+            .finally(() => {
+                setLoading(false);
         })
     }
 
@@ -118,7 +142,7 @@ const useFirebase = () => {
 
     useEffect(() => {
         setLoading(true);
-        if(user.email){
+        if (user.email) {
             const email = user.email;
             fetch(`https://gruesome-village-05256.herokuapp.com/checkAdmin/${email}`)
                 .then(res => res.json())
@@ -133,11 +157,49 @@ const useFirebase = () => {
                     }
                 })
         }
-    },[user.email])
+    }, [user.email]);
+
+    useEffect(() => {
+        setLoading(true);
+        if (user.email) {
+            const email = user.email;
+            console.log(user);
+            console.log(email);
+            if (user.emailVerified) {
+                setEmailVerified(true);
+            }
+            else {
+                setEmailVerified(false);
+            }
+
+            fetch(`http://localhost:5000/emailVerified/${email}`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+
+                    if (!data.emailVerified && user.emailVerified) {
+                        updateUserToDb(email);
+                    }
+                    else if (data.emailVerified && user.emailVerified) {
+                        setEmailVerified(true);
+                    }
+                    else if (!data.emailVerified && !user.emailVerified) {
+                        setEmailVerified(false);
+                    }
+            })
+
+        }
+    },[user.email, user])
 
 
     const saveUserToDb = (name, userProp, method) => {
-        const newUser = { Id: userProp.uid, Name: name, Email: userProp.email, Email_Verified: userProp.emailVerified };
+        const newUser = {
+            Id: userProp.uid,
+            Name: name,
+            Email: userProp.email,
+            Email_Verified: userProp.emailVerified
+        };
+
         fetch('https://gruesome-village-05256.herokuapp.com/users', {
             method: method,
             headers: { 'content-type': 'application/json' },
@@ -147,7 +209,21 @@ const useFirebase = () => {
             .then(data => console.log(data))
     }
 
-    return {user, error, loading, admin, setUser, setError, setLoading, signInWithGoogle, logOut, registerUser, logInUser, resetPassword }
+    const updateUserToDb = email => {
+        fetch(`http://localhost:5000/emailVerified/${email}`, {
+            method: "PUT",
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ Email_Verified: true })
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
+
+    return {
+        user, error, loading, admin, emailVerified,
+        setUser, setError, setLoading, signInWithGoogle,
+        logOut, registerUser, logInUser, resetPassword
+    }
 }
 
 export default useFirebase;

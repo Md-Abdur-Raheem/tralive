@@ -7,3 +7,10 @@ Trallive unlock the best possibilities for each individual traveler and each typ
 * Helps travelers easily plan and book their whole trip with the widest selection of vacation package.
 * The most rewarding to book a place to stay. Anywhere customers want to go.
 * Where families go to stay together. with beaches, houses, cabins, condos and more.
+
+
+# License & Copyright
+
+&copy Md. Abdur Raheem
+
+Licensed under [Apache License Version 2.0, January 2004](LICENSE)
