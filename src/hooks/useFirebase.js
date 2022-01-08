@@ -163,8 +163,8 @@ const useFirebase = () => {
         setLoading(true);
         if (user.email) {
             const email = user.email;
-            console.log(user);
-            console.log(email);
+            //console.log(user);
+            // console.log(email);
             if (user.emailVerified) {
                 setEmailVerified(true);
             }
@@ -175,7 +175,7 @@ const useFirebase = () => {
             fetch(`http://localhost:5000/emailVerified/${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    // console.log(data);
 
                     if (!data.emailVerified && user.emailVerified) {
                         updateUserToDb(email);
@@ -206,7 +206,7 @@ const useFirebase = () => {
             body: JSON.stringify(newUser)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => data)
     }
 
     const updateUserToDb = email => {
@@ -216,7 +216,7 @@ const useFirebase = () => {
             body: JSON.stringify({ Email_Verified: true })
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => data)
     }
 
     return {

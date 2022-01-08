@@ -33,8 +33,23 @@ const MakeAdmin = () => {
                     emailRef.current.value = "";
                 }
             })
-            e.preventDefault();
+        e.preventDefault();
     }
+
+    const deleteAdmin = email => {
+        fetch(`http://localhost:5000/adminUsers/${email}`, {
+            method: "PUT",
+            headers: { 'content-type': "application/json" }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    // setAlertModalShow(true);
+                    setControl(!control);
+                }
+            })
+    }
+
     return (
         <Container>
             <div>
@@ -67,7 +82,7 @@ const MakeAdmin = () => {
                             <td>{admin.Email}</td>
                             <td>{admin.Email_Verified.toString()}</td>
                             <td>
-                                <button /* onClick={() => { setModalShow(true); setDeleteId(destination._id)}} */ className="btn btn-danger">Remove</button>
+                                <button onClick={()=>deleteAdmin(admin.Email)} className="btn btn-danger">Remove</button>
                             </td>
                         </tr>)
                     }
