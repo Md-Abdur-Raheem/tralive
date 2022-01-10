@@ -26,7 +26,7 @@ const Footer = () => {
                             <li className="text list-item py-2"><NavLink to="/home" className="footer-link">Home</NavLink></li>
                             <li className="text list-item py-2"><NavLink to="/allDestinations" className="footer-link">All Destinations</NavLink></li>
                             <li className="text list-item py-2"><NavLink to="/contact" className="footer-link">Contact</NavLink></li>
-                            <li className="text list-item py-2"><NavLink to="/notFound" className="footer-link">Privacy Policy</NavLink></li>
+                            <li className="text list-item py-2"><a href='https://www.privacypolicies.com/live/67abcf0a-3333-401a-8cf9-714610deb33a' rel="noreferrer" target="_blank" className="footer-link">Privacy Policy</a></li>
                         </ul>
                     </Col>
                     <Col lg={3} className="text-start">
