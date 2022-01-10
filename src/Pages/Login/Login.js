@@ -9,7 +9,7 @@ import { useState } from 'react';
 import AlertModal from '../Shared/AlertModal/AlertModal'
 
 const Login = () => {
-    const { signInWithGoogle, logInUser, resetPassword } = useAuth();
+    const { signInWithGoogle, signInWithFacebook, logInUser, resetPassword } = useAuth();
     const [AlertModalShow, setAlertModalShow] = useState(false);
     const [AlertModalShow2, setAlertModalShow2] = useState(false);
 
@@ -18,6 +18,10 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         signInWithGoogle(location, navigate);
+    }
+
+    const handleFacebookSignIn = () => {
+        signInWithFacebook(location, navigate);
     }
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -69,7 +73,7 @@ const Login = () => {
 
                     <br /><br />
 
-                    <button onClick={handleGoogleSignIn} className="facebook-login-btn">
+                    <button onClick={handleFacebookSignIn} className="facebook-login-btn">
                     <a href="https://icons8.com/icon/118497/facebook">
                         <img src="https://img.icons8.com/color/24/000000/facebook-new.png" alt=""/>
                         </a> Sign in with facebook

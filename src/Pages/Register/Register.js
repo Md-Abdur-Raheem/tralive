@@ -6,12 +6,16 @@ import { useForm } from "react-hook-form";
 import { NavLink } from 'react-router-dom';
 
 const Register = () => {
-    const { signInWithGoogle, setError, registerUser, error } = useAuth();
+    const { signInWithGoogle, signInWithFacebook, setError, registerUser, error } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
 
     const handleGoogleSignIn = () => {
         signInWithGoogle(location, navigate);
+    }
+
+    const handleFacebookSignIn = () => {
+        signInWithFacebook(location, navigate);
     }
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -63,7 +67,7 @@ const Register = () => {
 
                     <br /><br />
 
-                    <button onClick={handleGoogleSignIn} className="facebook-login-btn">
+                    <button onClick={handleFacebookSignIn} className="facebook-login-btn">
                     <a href="https://icons8.com/icon/118497/facebook">
                         <img src="https://img.icons8.com/color/24/000000/facebook-new.png" alt=""/>
                         </a> Sign up with facebook

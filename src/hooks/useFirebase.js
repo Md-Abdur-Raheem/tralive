@@ -4,7 +4,7 @@ import {
     getAuth, signInWithPopup, GoogleAuthProvider,
     onAuthStateChanged, signOut, createUserWithEmailAndPassword,
     updateProfile, signInWithEmailAndPassword, sendPasswordResetEmail,
-    sendEmailVerification
+    sendEmailVerification, FacebookAuthProvider
 } from "firebase/auth";
 
 initAuthentication();
@@ -110,9 +110,30 @@ const useFirebase = () => {
             saveUserToDb(user.displayName, user, 'PUT');
         })
         .catch(error => {
-        setError(error.message)
+            setError(error.message);
         })
         .finally(() => setLoading(false))
+    }
+
+    const signInWithFacebook = (location, navigate) => {
+        const facebookProvider = new FacebookAuthProvider();
+        signInWithPopup(auth, facebookProvider)
+            .then((result) => {
+                const user = result.user;
+
+                const redirectURL = location?.state?.from?.pathname || "/";
+                navigate(redirectURL);
+
+                setUser(user);
+                saveUserToDb(user.displayName, user, 'PUT');
+            })
+            .catch((error) => {
+                setError(error.message);
+
+            })
+            .finally(() => setLoading(false));
+        
+
     }
 
     const logOut = () => {
@@ -222,7 +243,8 @@ const useFirebase = () => {
     return {
         user, error, loading, admin, emailVerified,
         setUser, setError, setLoading, signInWithGoogle,
-        logOut, registerUser, logInUser, resetPassword
+        signInWithFacebook, logOut, registerUser, logInUser,
+        resetPassword
     }
 }
 
