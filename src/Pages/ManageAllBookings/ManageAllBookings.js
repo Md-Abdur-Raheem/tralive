@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Dropdown, DropdownButton, Table } from 'react-bootstrap';
 import AlertModal from '../Shared/AlertModal/AlertModal';
 import VerticalModal from '../Shared/VerticalModal/VerticalModal';
-import './ManageAllBookings.css'
 
 const ManageAllBookings = () => {
     const [bookings, setBookings] = useState([]);

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import AlertModal from '../Shared/AlertModal/AlertModal';
-import './AddNewDestination.css'
 
 const AddNewDestination = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();

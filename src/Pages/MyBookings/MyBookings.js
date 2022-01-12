@@ -3,7 +3,6 @@ import { Table } from 'react-bootstrap';
 import useBookings from '../../hooks/useBookings';
 import VerticalModal from '../Shared/VerticalModal/VerticalModal';
 import AlertModal from '../Shared/AlertModal/AlertModal'
-import './MyBookings.css'
 
 const MyBookings = () => {
     const [cancelTripId, setCancelTripId] = useState('');
