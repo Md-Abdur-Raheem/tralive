@@ -12,26 +12,6 @@ import AdminRoute from './Pages/AdminRoute/AdminRoute';
 import Header from './Pages/Shared/Header/Header';
 import Footer from './Pages/Shared/Footer/Footer';
 
-
-
-/* import Home from './Pages/Home/Home';
-import Login from './Pages/Login/Login';
-import AllDestinations from './Pages/AllDestinations/AllDestinations';
-import Contact from './Pages/Contact/Contact';
-import AddNewDestination from './Pages/AddNewDestination/AddNewDestination';
-import BookingDestination from './Pages/BookigDestination/BookingDestination';
-import MyBookings from './Pages/MyBookings/MyBookings';
-import ManageAllBookings from './Pages/ManageAllBookings/ManageAllBookings';
-import AdminAllDestination from './Pages/AdminAllDestinations/AdminAllDestination';
-import Register from './Pages/Register/Register';
-import Dashboard from './Pages/Dashboard/Dashboard';
-import MakeAdmin from './Pages/MakeAdmin/MakeAdmin';
-import NotFound from './Pages/NotFound/NotFound';
-import MyWishLists from './Pages/MyWishLists/MyWishLists';
-import Payment from './Pages/Payment/Payment';
-import Success from './Pages/Success/Success'; */
-
-
 const Home = React.lazy(() => import('./Pages/Home/Home'));
 const AllDestinations = React.lazy(() => import('./Pages/AllDestinations/AllDestinations'));
 const Contact = React.lazy(() => import('./Pages/Contact/Contact'));

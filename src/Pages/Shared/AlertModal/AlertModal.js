@@ -1,7 +1,6 @@
 import React from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Modal from 'react-bootstrap/Modal';
-// import useAuth from '../../../hooks/useAuth';
 import './AlertModal.css'
 
 

@@ -1,15 +1,55 @@
-# Tralive
-No matter who you are, or where you are going, our travel brands help every type of traveler not only find the trip that’s right for them, but get the best value every time. [Visit Tralive](https://tralive-faad8.web.app/) 
+# "Tralive" for MongoDB Atlas Hackathon  
+Using this website users can book their favourite tour destination. It is created in order to participate in the MongoDB Atlas Hackathon. [Visit Tralive](https://tralive-faad8.web.app/) 
 
-* Whether it’s planning a family vacation, booking for business, or organizing the trip of a lifetime,
-Trallive unlock the best possibilities for each individual traveler and each type of trip.
-* Our investments in technology make it possible for us to deliver innovations at a faster pace so planning and booking becomes a more effortless and exciting part of the journey, wherever that leads you.
-* Helps travelers easily plan and book their whole trip with the widest selection of vacation package.
-* The most rewarding to book a place to stay. Anywhere customers want to go.
-* Where families go to stay together. with beaches, houses, cabins, condos and more.
+## Category
+
+---
+
+This project is for the "Choose Your Own Adventure" category for the MongoDB Atlas Hackathon.
+
+## Directories
+
+---
+
+This repo stores both the front-end and back-end of the project.
+
+Front-end files are located inside the ./src directory.
+
+Back-end files are located inside the ./server directory.
+
+## Technology Used
+
+- Front-end
+
+    - React.js
+
+    - React Bootstrap
+
+    - css3
+
+- Back-end
+
+    - Node.js
+
+    - Express.js
+
+- Database
+
+    - MongoDB
+
+- Authentication
+    
+    - Firebase
+
+- Deployment
+
+    - Firebase (Front-end)
+
+    - Heroku (Back-end)
 
 
-# License & Copyright
+
+## License & Copyright
 
 © Md. Abdur Raheem
 
