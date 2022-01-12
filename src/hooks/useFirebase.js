@@ -193,7 +193,7 @@ const useFirebase = () => {
                 setEmailVerified(false);
             }
 
-            fetch(`http://localhost:5000/emailVerified/${email}`)
+            fetch(`https://gruesome-village-05256.herokuapp.com/emailVerified/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     // console.log(data);
@@ -231,7 +231,7 @@ const useFirebase = () => {
     }
 
     const updateUserToDb = email => {
-        fetch(`http://localhost:5000/emailVerified/${email}`, {
+        fetch(`https://gruesome-village-05256.herokuapp.com/emailVerified/${email}`, {
             method: "PUT",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ Email_Verified: true })

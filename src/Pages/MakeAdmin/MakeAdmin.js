@@ -37,7 +37,7 @@ const MakeAdmin = () => {
     }
 
     const deleteAdmin = email => {
-        fetch(`http://localhost:5000/adminUsers/${email}`, {
+        fetch(`https://gruesome-village-05256.herokuapp.com/adminUsers/${email}`, {
             method: "PUT",
             headers: { 'content-type': "application/json" }
         })
